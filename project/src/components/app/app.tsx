@@ -1,4 +1,4 @@
-import MainPage from '../../pages/main-page/MainPage';
+import MainPage from '../../pages/main-page';
 type FilmDetails = {
   name: string,
   genre: string,
