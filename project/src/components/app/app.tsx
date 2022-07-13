@@ -1,13 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import MainPage from '../../pages/main-page';
-import SignIn from '../../pages/sign-in';
-import Mylist from '../../pages/my-list';
-import MoviePage from '../../pages/movie-page';
-import AddReview from '../../pages/add-review';
-import Player from '../../pages/player';
-import NotFoundPage from '../../pages/not-found-page';
-import PrivateRoute from '../private-route';
+import { PrivateRoute } from '../../components';
+import { MainPage, SignIn, MyList, MoviePage, AddReview, Player, NotFoundPage } from '../../pages';
 
 import { AuthorizationStatus } from '../const';
 
@@ -30,9 +24,9 @@ function App({ filmDetails }: MainComponentProps): JSX.Element {
         <Route path='/login' element={<SignIn />} />
         <Route path='/mylist' element={
           <PrivateRoute
-            authorizationStatus={AuthorizationStatus.NoAuth}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
           >
-            <Mylist />
+            <MyList />
           </PrivateRoute>
         }
         />

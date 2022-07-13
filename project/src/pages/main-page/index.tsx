@@ -1,4 +1,4 @@
-import FilmCard from '../../components/film-card/FilmCard';
+import { FilmCard } from '../../components';
 
 type FilmDetails = {
   name: string,
