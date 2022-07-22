@@ -1,7 +1,17 @@
-function PlayerPause(): JSX.Element {
+type PlayerPauseComponentProps = {
+  filmPath?: string;
+};
+
+function PlayerPause({ filmPath }: PlayerPauseComponentProps): JSX.Element {
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg" />
+      {filmPath ? (
+        <video
+          src={filmPath}
+          className="player__video"
+          poster="img/player-poster.jpg"
+        />
+      ) : null}
 
       <button type="button" className="player__exit">
         Exit

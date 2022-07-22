@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import { FilmsMock } from '../../mocks/types';
+import { FilmsMock } from '../mocks/types';
 
-type MoviePageProps = {
+type AddReviewProps = {
   filmsMock: FilmsMock[];
 };
 
-export const usePlayerHook = ({ filmsMock }: MoviePageProps) => {
+export const useCurrentFilmHook = ({ filmsMock }: AddReviewProps) => {
   const { id } = useParams();
 
   const currentFilm = id ? filmsMock.find((film) => film.id === id) : null;

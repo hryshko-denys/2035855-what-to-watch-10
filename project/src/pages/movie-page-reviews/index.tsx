@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { MainLogo } from '../../components';
 
 function MoviePageReviews(): JSX.Element {
@@ -29,7 +31,7 @@ function MoviePageReviews(): JSX.Element {
                 </div>
               </li>
               <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
+                <Link to="/" className="user-block__link">Sign out</Link>
               </li>
             </ul>
           </header>
@@ -85,19 +87,19 @@ function MoviePageReviews(): JSX.Element {
               <nav className="film-nav film-card__nav">
                 <ul className="film-nav__list">
                   <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Overview
-                    </a>
+                    </Link>
                   </li>
                   <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Details
-                    </a>
+                    </Link>
                   </li>
                   <li className="film-nav__item film-nav__item--active">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Reviews
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { FilmsMock } from '../../mocks/types';
 import { FilmCard, MainLogo } from '../../components';
+
+import { FilmsMock } from '../../mocks/types';
+
+import { useMyListHook } from './hooks';
+
 
 type MyListComponentProps = {
   usersList: FilmsMock[];
 };
 
 function MyList({ usersList }: MyListComponentProps): JSX.Element {
+  const { setFilmId, resetFilmId, activeFilmId } = useMyListHook();
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -38,7 +44,13 @@ function MyList({ usersList }: MyListComponentProps): JSX.Element {
 
         <div className="catalog__films-list">
           {usersList.map((film) => (
-            <FilmCard key={film.id} film={film} />
+            <FilmCard
+              key={film.id}
+              film={film}
+              isActive={activeFilmId === film.id}
+              setFilmId={setFilmId}
+              resetFilmId={resetFilmId}
+            />
           ))}
         </div>
       </section>

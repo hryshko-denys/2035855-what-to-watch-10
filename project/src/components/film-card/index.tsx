@@ -4,21 +4,35 @@ import { FilmsMock } from '../../mocks/types';
 
 type FilmCardComponentProps = {
   film: FilmsMock;
+  isActive: boolean;
+  setFilmId: (filmId: string) => void;
+  resetFilmId: () => void;
 };
 
-function FilmCard({ film }: FilmCardComponentProps): JSX.Element {
+function FilmCard({
+  film,
+  isActive,
+  setFilmId,
+  resetFilmId,
+}: FilmCardComponentProps): JSX.Element {
+  const { id, img, name } = film;
+
   return (
-    <article className="small-film-card catalog__films-card">
-      <Link to={`/films/${film.id}`} className="small-film-card__link">
+    <article
+      onMouseEnter={() => setFilmId(id)}
+      onMouseLeave={resetFilmId}
+      className="small-film-card catalog__films-card"
+    >
+      <div className="small-film-card__link">
         <div className="small-film-card__image">
-          <img src={film.img} alt={film.name} width="280" height="175" />
+          <img src={img} alt={name} width="280" height="175" />
         </div>
         <h3 className="small-film-card__title">
-          <a className="small-film-card__link" href="film-page.html">
-            {film.name}
-          </a>
+          <Link to={`/films/${id}`} className="small-film-card__link">
+            {name}
+          </Link>
         </h3>
-      </Link>
+      </div>
     </article>
   );
 }

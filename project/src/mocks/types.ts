@@ -1,9 +1,9 @@
-type RatingInfo = {
+export type RatingInfo = {
   score: number,
   numberAmount: number
 }
 
-type DescriptionType = {
+export type DescriptionType = {
   firstPart: string,
   secondPart: string,
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { MainLogo, FormAddReview } from '../../components';
 
-import { useAddReviewHook } from './hooks';
+import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
 import { FilmsMock } from '../../mocks/types';
 
@@ -12,7 +12,7 @@ type AddReviewComponentProps = {
 
 
 function AddReview({ filmsMock }: AddReviewComponentProps): JSX.Element {
-  const { currentFilm } = useAddReviewHook({ filmsMock });
+  const { currentFilm } = useCurrentFilmHook({ filmsMock });
 
   return (
     <section className="film-card film-card--full">

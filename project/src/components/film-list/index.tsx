@@ -1,21 +1,27 @@
-import { useState } from 'react';
-
 import FilmCard from '../film-card';
 
 import { FilmsMock } from '../../mocks/types';
 
+import { useFilmListHook } from './hooks';
+
 type FilmsListComponentProps = {
   filmsMock: FilmsMock[];
-}
+};
 
 function FilmList({ filmsMock }: FilmsListComponentProps): JSX.Element {
-  // task #5
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeFilmId, setActiveFilmId] = useState();
+  const { setFilmId, resetFilmId, activeFilmId } = useFilmListHook();
 
   return (
     <div className="catalog__films-list">
-      {filmsMock.map((film) => <FilmCard key={film.id} film={film} />)}
+      {filmsMock.map((film) => (
+        <FilmCard
+          key={film.id}
+          film={film}
+          isActive={activeFilmId === film.id}
+          setFilmId={setFilmId}
+          resetFilmId={resetFilmId}
+        />
+      ))}
     </div>
   );
 }
