@@ -1,11 +1,24 @@
-function Player(): JSX.Element {
+import { FilmsMock } from '../../mocks/types';
+
+import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
+
+type PlayerComponentProps = {
+  filmsMock: FilmsMock[];
+};
+
+function Player({ filmsMock }: PlayerComponentProps): JSX.Element {
+  const { currentFilm } = useCurrentFilmHook({ filmsMock });
+  const video = currentFilm ? currentFilm.video : null;
+
   return (
     <div className="player">
-      <video
-        src="#"
-        className="player__video"
-        poster="img/player-poster.jpg"
-      />
+      {video ? (
+        <video
+          src={video}
+          className="player__video"
+          poster="img/player-poster.jpg"
+        />
+      ) : null}
 
       <button type="button" className="player__exit">
         Exit

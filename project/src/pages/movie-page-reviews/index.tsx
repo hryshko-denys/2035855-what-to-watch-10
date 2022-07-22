@@ -1,3 +1,7 @@
+import { Link } from 'react-router-dom';
+
+import { MainLogo } from '../../components';
+
 function MoviePageReviews(): JSX.Element {
   return (
     <>
@@ -13,13 +17,7 @@ function MoviePageReviews(): JSX.Element {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
+            <MainLogo />
 
             <ul className="user-block">
               <li className="user-block__item">
@@ -33,7 +31,7 @@ function MoviePageReviews(): JSX.Element {
                 </div>
               </li>
               <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
+                <Link to="/" className="user-block__link">Sign out</Link>
               </li>
             </ul>
           </header>
@@ -89,19 +87,19 @@ function MoviePageReviews(): JSX.Element {
               <nav className="film-nav film-card__nav">
                 <ul className="film-nav__list">
                   <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Overview
-                    </a>
+                    </Link>
                   </li>
                   <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Details
-                    </a>
+                    </Link>
                   </li>
                   <li className="film-nav__item film-nav__item--active">
-                    <a href="#" className="film-nav__link">
+                    <Link to="/" className="film-nav__link">
                       Reviews
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -308,13 +306,7 @@ function MoviePageReviews(): JSX.Element {
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <MainLogo isLight />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
