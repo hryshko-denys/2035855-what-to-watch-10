@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
+import filmsMock from './mocks/films';
 
 type FilmDetails = {
   name: string,
@@ -17,6 +18,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App filmDetails={filmDetails} />
+    <App filmDetails={filmDetails} filmsMock={filmsMock} />
   </React.StrictMode>,
 );

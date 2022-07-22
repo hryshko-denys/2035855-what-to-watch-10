@@ -1,8 +1,19 @@
-function Player(): JSX.Element {
+import { FilmsMock } from '../../mocks/types';
+
+import { usePlayerHook } from './hooks';
+
+
+type PlayerComponentProps = {
+  filmsMock: FilmsMock[],
+}
+
+function Player({ filmsMock }: PlayerComponentProps): JSX.Element {
+  const { currentFilm } = usePlayerHook({ filmsMock });
+
   return (
     <div className="player">
       <video
-        src="#"
+        src={currentFilm?.video}
         className="player__video"
         poster="img/player-poster.jpg"
       />
