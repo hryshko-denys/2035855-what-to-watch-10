@@ -7,13 +7,18 @@ type MoviePageProps = {
 };
 
 export const useMoviePageHook = ({ filmsMock }: MoviePageProps) => {
-  const [activeGenre, seActiveGenre] = useState('All genres');
+  const defaultValue = 'All genres';
 
-  const userFilmsNumber = filmsMock.filter((film) => film.isInUsersList).length;
+  const [activeGenre, seActiveGenre] = useState(defaultValue);
 
-  const activeGenreList = filmsMock.filter((film) =>
-    activeGenre === 'All genres' ? true : film.genre === activeGenre
-  );
+  const userFilmsNumber = filmsMock.filter(
+    ({ isInUsersList }) => isInUsersList
+  ).length;
+
+  const activeGenreList =
+    activeGenre === defaultValue
+      ? filmsMock
+      : filmsMock.filter(({ genre }) => genre === activeGenre);
 
   return { userFilmsNumber, activeGenre, activeGenreList, seActiveGenre };
 };
