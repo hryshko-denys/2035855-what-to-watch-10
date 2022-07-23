@@ -15,7 +15,7 @@ function AddReviewStar({ id, isChecked, handleRatingChange }: AddReviewStarCompo
         type="radio"
         name="rating"
         value={id}
-        defaultChecked={isChecked}
+        checked={isChecked}
         onChange={handleRatingChange}
       />
       <label className="rating__label" htmlFor={`star-${id}`}>

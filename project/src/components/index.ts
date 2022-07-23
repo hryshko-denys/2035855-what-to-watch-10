@@ -7,6 +7,7 @@ import GenreList from './genre-list';
 import AddReviewStar from './add-review-star';
 import MovieDetailsTop from './movie-details-top';
 import MovieDetailsBottom from './movie-details-bottom';
+import VideoPlayer from './video-player';
 
 export {
   FilmCard,
@@ -18,4 +19,5 @@ export {
   AddReviewStar,
   MovieDetailsTop,
   MovieDetailsBottom,
+  VideoPlayer,
 };
