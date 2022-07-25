@@ -2,14 +2,14 @@ import FilmCard from '../film-card';
 
 import { FilmsMock } from '../../mocks/types';
 
-import { useFilmListHook } from './hooks';
+import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
 type FilmsListComponentProps = {
   filmsMock: FilmsMock[];
 };
 
 function FilmList({ filmsMock }: FilmsListComponentProps): JSX.Element {
-  const { setFilmId, resetFilmId, activeFilmId } = useFilmListHook();
+  const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview();
 
   return (
     <div className="catalog__films-list">

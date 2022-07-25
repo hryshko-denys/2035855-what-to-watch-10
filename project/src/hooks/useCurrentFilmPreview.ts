@@ -2,14 +2,17 @@ import { useState } from 'react';
 
 type ActiveFilmType = string | null;
 
-export const useMyListHook = () => {
+export const useCurrentFilmPreview = () => {
   const [activeFilmId, setActiveFilmId] = useState<ActiveFilmType>(null);
 
+  let timeoutId: ReturnType<typeof setTimeout>;
+
   const setFilmId = (id: string) => {
-    setActiveFilmId(id);
+    timeoutId = setTimeout(() => setActiveFilmId(id), 2000);
   };
 
   const resetFilmId = () => {
+    clearTimeout(timeoutId);
     setActiveFilmId(null);
   };
 

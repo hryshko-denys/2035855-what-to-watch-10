@@ -22,7 +22,7 @@ function FilmCard({
   return (
     <article
       onMouseEnter={() => setFilmId(id)}
-      onMouseLeave={resetFilmId}
+      onMouseLeave={() => resetFilmId()}
       className="small-film-card catalog__films-card"
     >
       {isActive ? (
