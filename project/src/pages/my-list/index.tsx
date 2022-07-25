@@ -4,7 +4,7 @@ import { FilmCard, MainLogo } from '../../components';
 
 import { FilmsMock } from '../../mocks/types';
 
-import { useMyListHook } from './hooks';
+import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
 
 type MyListComponentProps = {
@@ -12,7 +12,7 @@ type MyListComponentProps = {
 };
 
 function MyList({ usersList }: MyListComponentProps): JSX.Element {
-  const { setFilmId, resetFilmId, activeFilmId } = useMyListHook();
+  const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview();
 
   return (
     <div className="user-page">

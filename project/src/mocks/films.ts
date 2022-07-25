@@ -51,7 +51,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '3',
@@ -77,7 +77,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '4',
@@ -103,7 +103,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '5',
@@ -129,7 +129,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '6',
@@ -155,7 +155,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '7',
@@ -181,7 +181,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
   {
     id: '8',
@@ -207,7 +207,7 @@ const filmsMock: FilmsMock[] = [
     },
     director: 'Wes Anderson',
     starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4'
+    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
   },
 ];
 
