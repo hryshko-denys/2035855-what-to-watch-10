@@ -6,8 +6,6 @@ import { useMoviePageHook } from './hooks';
 
 import { FilmsMock } from '../../mocks/types';
 
-import { GENRE_LIST } from '../../components/const';
-
 
 type FilmDetails = {
   name: string;
@@ -24,7 +22,7 @@ function MainPage({
   filmDetails,
   filmsMock,
 }: MainPageComponentProps): JSX.Element {
-  const { userFilmsNumber, activeGenre, seActiveGenre, activeGenreList } = useMoviePageHook({ filmsMock });
+  const { userFilmsNumber, filmsList } = useMoviePageHook({ filmsMock });
 
   return (
     <main>
@@ -206,13 +204,9 @@ function MainPage({
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList
-            genreList={GENRE_LIST}
-            activeGenre={activeGenre}
-            seActiveGenre={seActiveGenre}
-          />
+          <GenreList />
 
-          <FilmList filmsMock={activeGenreList} />
+          <FilmList filmsList={filmsList} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">

@@ -71,7 +71,7 @@ function MoviePage({ filmsMock }: MoviePageComponentProps): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmList filmsMock={moreLikeThisList} />
+          <FilmList filmsList={moreLikeThisList} />
         </section>
 
         <footer className="page-footer">

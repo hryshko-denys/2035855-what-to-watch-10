@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import { Provider } from 'react-redux';
+
+import { store } from './store';
+
 import App from './components/app/app';
 
 import filmsMock from './mocks/films';
@@ -20,6 +24,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App filmDetails={filmDetails} filmsMock={filmsMock} />
+    <Provider store={store}>
+      <App filmDetails={filmDetails} filmsMock={filmsMock} />
+    </Provider>
   </React.StrictMode>,
 );
