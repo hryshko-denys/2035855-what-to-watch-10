@@ -5,15 +5,15 @@ import { FilmsMock } from '../../mocks/types';
 import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
 type FilmsListComponentProps = {
-  filmsMock: FilmsMock[];
+  filmsList: FilmsMock[];
 };
 
-function FilmList({ filmsMock }: FilmsListComponentProps): JSX.Element {
+function FilmList({ filmsList }: FilmsListComponentProps): JSX.Element {
   const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview();
 
   return (
     <div className="catalog__films-list">
-      {filmsMock.map((film) => (
+      {filmsList.map((film) => (
         <FilmCard
           key={film.id}
           film={film}
