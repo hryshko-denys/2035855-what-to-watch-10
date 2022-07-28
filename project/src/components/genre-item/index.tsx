@@ -9,7 +9,7 @@ type GenreItemComponentProps = {
 };
 
 function GenreItem({ genre }: GenreItemComponentProps): JSX.Element {
-  const activeGenre = useAppSelector((state) => state.activeGenre);
+  const { activeGenre } = useAppSelector((state) => state);
 
   const dispatch = useAppDispatch();
 

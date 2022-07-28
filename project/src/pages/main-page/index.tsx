@@ -1,11 +1,12 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FilmList, MainLogo, GenreList } from '../../components';
 
 import { useMoviePageHook } from './hooks';
+import { useAppDispatch } from '../../hooks';
 
 import { FilmsMock } from '../../mocks/types';
-
 
 type FilmDetails = {
   name: string;
@@ -22,7 +23,21 @@ function MainPage({
   filmDetails,
   filmsMock,
 }: MainPageComponentProps): JSX.Element {
-  const { userFilmsNumber, filmsList } = useMoviePageHook({ filmsMock });
+  const {
+    userFilmsNumber,
+    filmsList,
+    isShowMoreBtnShown,
+    showMoreFilms,
+    resetFilmsList,
+  } = useMoviePageHook({
+    filmsMock,
+  });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => () => {
+    dispatch(resetFilmsList());
+  }, []);
 
   return (
     <main>
@@ -208,11 +223,17 @@ function MainPage({
 
           <FilmList filmsList={filmsList} />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          {isShowMoreBtnShown && (
+            <div className="catalog__more">
+              <button
+                onClick={() => dispatch(showMoreFilms())}
+                className="catalog__button"
+                type="button"
+              >
+                Show more
+              </button>
+            </div>
+          )}
         </section>
 
         <footer className="page-footer">
