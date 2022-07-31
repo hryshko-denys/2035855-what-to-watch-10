@@ -4,15 +4,9 @@ import { MainLogo, FormAddReview } from '../../components';
 
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
-import { FilmsMock } from '../../mocks/types';
 
-type AddReviewComponentProps = {
-  filmsMock: FilmsMock[],
-}
-
-
-function AddReview({ filmsMock }: AddReviewComponentProps): JSX.Element {
-  const { currentFilm } = useCurrentFilmHook({ filmsMock });
+function AddReview(): JSX.Element {
+  const { currentFilm } = useCurrentFilmHook();
 
   return (
     <section className="film-card film-card--full">

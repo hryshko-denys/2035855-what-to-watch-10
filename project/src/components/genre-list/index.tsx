@@ -5,10 +5,11 @@ import { GENRE_LIST } from '../const';
 function GenreList(): JSX.Element {
   return (
     <ul className="catalog__genres-list">
-      {GENRE_LIST.map((genre) => (
+      {GENRE_LIST.map(({ name, value }) => (
         <GenreItem
-          genre={genre}
-          key={genre}
+          genre={name}
+          value={value}
+          key={name}
         />
       ))}
     </ul>

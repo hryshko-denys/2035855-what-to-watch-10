@@ -8,6 +8,8 @@ import AddReviewStar from './add-review-star';
 import MovieDetailsTop from './movie-details-top';
 import MovieDetailsBottom from './movie-details-bottom';
 import VideoPlayer from './video-player';
+import PromoFilm from './promo-film';
+import Loader from './loader';
 
 export {
   FilmCard,
@@ -20,4 +22,6 @@ export {
   MovieDetailsTop,
   MovieDetailsBottom,
   VideoPlayer,
+  PromoFilm,
+  Loader,
 };

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
+import { FilmsListType } from '../../types/FilmsListType';
+
 import { VideoPlayer } from '../index';
 
-import { FilmsMock } from '../../mocks/types';
-
 type FilmCardComponentProps = {
-  film: FilmsMock;
+  film: FilmsListType;
   isActive: boolean;
-  setFilmId: (filmId: string) => void;
+  setFilmId: (filmId: number) => void;
   resetFilmId: () => void;
 };
 
@@ -17,7 +17,7 @@ function FilmCard({
   setFilmId,
   resetFilmId,
 }: FilmCardComponentProps): JSX.Element {
-  const { id, img, name, video } = film;
+  const { id, previewImage, name, videoLink, posterImage } = film;
 
   return (
     <article
@@ -26,11 +26,11 @@ function FilmCard({
       className="small-film-card catalog__films-card"
     >
       {isActive ? (
-        <VideoPlayer videoSrc={video} posterImage={img} />
+        <VideoPlayer videoSrc={videoLink} posterImage={posterImage} id={id} />
       ) : (
         <div className="small-film-card__link">
           <div className="small-film-card__image">
-            <img src={img} alt={name} width="280" height="175" />
+            <img src={previewImage} alt={name} width="280" height="175" />
           </div>
           <h3 className="small-film-card__title">
             <Link to={`/films/${id}`} className="small-film-card__link">

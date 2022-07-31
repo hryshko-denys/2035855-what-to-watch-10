@@ -1,20 +1,18 @@
 import { useParams } from 'react-router-dom';
 
-import { FilmsMock } from '../../mocks/types';
+import { useAppSelector } from '../../hooks';
 
-type MoviePageProps = {
-  filmsMock: FilmsMock[];
-};
 
-export const useMoviePageHook = ({ filmsMock }: MoviePageProps) => {
+export const useMoviePageHook = () => {
+  const { filmsList } = useAppSelector((state) => state);
   const { id } = useParams();
 
-  const currentFilm = id ? filmsMock.find((film) => film.id === id) : null;
+  const currentFilm = id ? filmsList.find((film) => film.id === +id) : null;
 
-  const myList = filmsMock.filter(({ isInUsersList }) => isInUsersList);
+  const myList = filmsList.filter(({ isFavorite }) => isFavorite);
 
   const moreLikeThisList = id
-    ? filmsMock.filter((film) => film.id !== id).slice(0, 4)
+    ? filmsList.filter((film) => film.id !== +id).slice(0, 4)
     : [];
 
   return { currentFilm, myList, moreLikeThisList, id };
