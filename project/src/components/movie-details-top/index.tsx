@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
-import { FilmsMock } from '../../mocks/types';
+import { FilmsListType } from '../../types/FilmsListType';
 
 type MovieDetailsTopComponentProps = {
-  currentFilm: FilmsMock;
+  currentFilm: FilmsListType;
   id: string;
   myListLength: number;
 };
 
 function MovieDetailsTop({ currentFilm, id, myListLength }: MovieDetailsTopComponentProps): JSX.Element {
-  const { name, genre, year } = currentFilm;
+  const { name, genre, released } = currentFilm;
 
   return (
     <div className="film-card__wrap">
@@ -17,7 +17,7 @@ function MovieDetailsTop({ currentFilm, id, myListLength }: MovieDetailsTopCompo
         <h2 className="film-card__title">{name}</h2>
         <p className="film-card__meta">
           <span className="film-card__genre">{genre}</span>
-          <span className="film-card__year">{year}</span>
+          <span className="film-card__year">{released}</span>
         </p>
 
         <div className="film-card__buttons">

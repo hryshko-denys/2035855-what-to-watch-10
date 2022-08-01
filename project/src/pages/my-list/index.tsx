@@ -2,17 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { FilmCard, MainLogo } from '../../components';
 
-import { FilmsMock } from '../../mocks/types';
-
 import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
+import { useUsersList } from './useUsersList';
 
-type MyListComponentProps = {
-  usersList: FilmsMock[];
-};
-
-function MyList({ usersList }: MyListComponentProps): JSX.Element {
-  const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview();
+function MyList(): JSX.Element {
+  const { userFilms } = useUsersList();
+  const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview(userFilms);
 
   return (
     <div className="user-page">
@@ -20,7 +16,7 @@ function MyList({ usersList }: MyListComponentProps): JSX.Element {
         <MainLogo />
 
         <h1 className="page-title user-page__title">
-          My list <span className="user-page__film-count">{usersList.length}</span>
+          My list <span className="user-page__film-count">{userFilms.length}</span>
         </h1>
         <ul className="user-block">
           <li className="user-block__item">
@@ -43,7 +39,7 @@ function MyList({ usersList }: MyListComponentProps): JSX.Element {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__films-list">
-          {usersList.map((film) => (
+          {userFilms.map((film) => (
             <FilmCard
               key={film.id}
               film={film}

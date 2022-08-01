@@ -1,24 +1,29 @@
 import { Link } from 'react-router-dom';
 
-import { FilmsMock } from '../../mocks/types';
+import { FilmsListType } from '../../types/FilmsListType';
 
 type MovieDetailsBottomComponentProps = {
-  currentFilm: FilmsMock;
-}
+  currentFilm: FilmsListType;
+};
 
-function MovieDetailsBottom({ currentFilm }: MovieDetailsBottomComponentProps): JSX.Element {
-  const { rating, descriptionText, director, starring } = currentFilm;
+function MovieDetailsBottom({
+  currentFilm,
+}: MovieDetailsBottomComponentProps): JSX.Element {
+  const {
+    rating,
+    description,
+    director,
+    starring,
+    scoresCount,
+    posterImage,
+    name,
+  } = currentFilm;
 
   return (
     <div className="film-card__wrap film-card__translate-top">
       <div className="film-card__info">
         <div className="film-card__poster film-card__poster--big">
-          <img
-            src="img/the-grand-budapest-hotel-poster.jpg"
-            alt="The Grand Budapest Hotel poster"
-            width="218"
-            height="327"
-          />
+          <img src={posterImage} alt={name} width="218" height="327" />
         </div>
 
         <div className="film-card__desc">
@@ -43,21 +48,15 @@ function MovieDetailsBottom({ currentFilm }: MovieDetailsBottomComponentProps): 
           </nav>
 
           <div className="film-rating">
-            <div className="film-rating__score">
-              {rating.score}
-            </div>
+            <div className="film-rating__score">{scoresCount}</div>
             <p className="film-rating__meta">
               <span className="film-rating__level">Very good</span>
-              <span className="film-rating__count">
-                {rating.numberAmount}
-              </span>
+              <span className="film-rating__count">{rating}</span>
             </p>
           </div>
 
           <div className="film-card__text">
-            <p>{descriptionText.firstPart}</p>
-
-            <p>{descriptionText.secondPart}</p>
+            <p>{description}</p>
 
             <p className="film-card__director">
               <strong>Director: {director}</strong>

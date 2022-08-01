@@ -5,10 +5,11 @@ import { changeGenre } from '../../store/action';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 type GenreItemComponentProps = {
-  genre: string;
+  genre: string,
+  value: string,
 };
 
-function GenreItem({ genre }: GenreItemComponentProps): JSX.Element {
+function GenreItem({ genre, value }: GenreItemComponentProps): JSX.Element {
   const { activeGenre } = useAppSelector((state) => state);
 
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ function GenreItem({ genre }: GenreItemComponentProps): JSX.Element {
     >
       <Link
         to="/"
-        onClick={() => dispatch(changeGenre(genre))}
+        onClick={() => dispatch(changeGenre(value))}
         className="catalog__genres-link"
       >
         {genre}

@@ -1,13 +1,33 @@
 import { useState } from 'react';
 
-type ActiveFilmType = string | null;
+import { useAppSelector } from '../hooks';
 
-export const useCurrentFilmPreview = () => {
+import { showMoreFilms, resetFilmsList } from '../store/action';
+
+import { FilmsListType } from '../types/FilmsListType';
+
+import { INITIAL_GENRE } from '../store/const';
+
+type ActiveFilmType = number | null;
+
+export const useCurrentFilmPreview = (filmsList: FilmsListType[]) => {
+  const { activeGenre, activeFilmsCardsNumber } = useAppSelector(
+    (state) => state
+  );
   const [activeFilmId, setActiveFilmId] = useState<ActiveFilmType>(null);
+
+  const filteredListByGenre =
+    activeGenre === INITIAL_GENRE
+      ? filmsList
+      : filmsList.filter(({ genre }) => activeGenre === genre);
+
+  const listToShow = filteredListByGenre.slice(0, activeFilmsCardsNumber);
+
+  const isShowMoreBtnShown = activeFilmsCardsNumber < filteredListByGenre.length;
 
   let timeoutId: ReturnType<typeof setTimeout>;
 
-  const setFilmId = (id: string) => {
+  const setFilmId = (id: number) => {
     timeoutId = setTimeout(() => setActiveFilmId(id), 2000);
   };
 
@@ -16,5 +36,13 @@ export const useCurrentFilmPreview = () => {
     setActiveFilmId(null);
   };
 
-  return { setFilmId, resetFilmId, activeFilmId };
+  return {
+    setFilmId,
+    resetFilmId,
+    activeFilmId,
+    isShowMoreBtnShown,
+    resetFilmsList,
+    showMoreFilms,
+    listToShow,
+  };
 };

@@ -1,14 +1,9 @@
-import { FilmsMock } from '../../mocks/types';
-
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
-type PlayerComponentProps = {
-  filmsMock: FilmsMock[];
-};
+function Player(): JSX.Element {
+  const { currentFilm } = useCurrentFilmHook();
 
-function Player({ filmsMock }: PlayerComponentProps): JSX.Element {
-  const { currentFilm } = useCurrentFilmHook({ filmsMock });
-  const video = currentFilm ? currentFilm.video : null;
+  const video = currentFilm ? currentFilm.videoLink : null;
 
   return (
     <div className="player">

@@ -7,18 +7,10 @@ import {
   MovieDetailsBottom,
 } from '../../components';
 
-import { FilmsMock } from '../../mocks/types';
-
 import { useMoviePageHook } from './hooks';
 
-type MoviePageComponentProps = {
-  filmsMock: FilmsMock[];
-};
-
-function MoviePage({ filmsMock }: MoviePageComponentProps): JSX.Element {
-  const { currentFilm, myList, moreLikeThisList, id } = useMoviePageHook({
-    filmsMock,
-  });
+function MoviePage(): JSX.Element {
+  const { currentFilm, myList, moreLikeThisList, id } = useMoviePageHook();
 
   return (
     <>
@@ -27,8 +19,8 @@ function MoviePage({ filmsMock }: MoviePageComponentProps): JSX.Element {
           <div className="film-card__hero">
             <div className="film-card__bg">
               <img
-                src="img/bg-the-grand-budapest-hotel.jpg"
-                alt="The Grand Budapest Hotel"
+                src={currentFilm.backgroundImage}
+                alt={currentFilm.name}
               />
             </div>
 
