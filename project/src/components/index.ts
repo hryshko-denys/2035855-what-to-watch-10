@@ -10,6 +10,8 @@ import MovieDetailsBottom from './movie-details-bottom';
 import VideoPlayer from './video-player';
 import PromoFilm from './promo-film';
 import Loader from './loader';
+import SignOut from './sign-out';
+import SignIn from './sign-in';
 
 export {
   FilmCard,
@@ -24,4 +26,6 @@ export {
   VideoPlayer,
   PromoFilm,
   Loader,
+  SignOut,
+  SignIn,
 };

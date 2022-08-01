@@ -1,7 +1,7 @@
 import { useAppSelector } from '../../hooks';
 
 export const usePromoFilmHook = () => {
-  const { filmsList, promoFilm } = useAppSelector(
+  const { filmsList, authorizationStatus } = useAppSelector(
     (state) => state
   );
 
@@ -11,6 +11,6 @@ export const usePromoFilmHook = () => {
 
   return {
     userFilmsNumber,
-    promoFilm,
+    authorizationStatus,
   };
 };

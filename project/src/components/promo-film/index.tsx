@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { MainLogo } from '../../components';
+import { MainLogo, SignIn, SignOut } from '../../components';
+
 import { FilmsListType } from '../../types/FilmsListType';
+
+import { AuthorizationStatus } from '../const';
 
 import { usePromoFilmHook } from './usePromoFilmHook';
 
 type PromoFilmComponentProps = {
-  promoFilm: FilmsListType,
-}
+  promoFilm: FilmsListType;
+};
 
 function PromoFilm({ promoFilm }: PromoFilmComponentProps): JSX.Element {
-  const { userFilmsNumber } = usePromoFilmHook();
+  const { userFilmsNumber, authorizationStatus } = usePromoFilmHook();
 
   const { genre, name, released, backgroundImage, posterImage, id } = promoFilm;
 
@@ -25,23 +28,11 @@ function PromoFilm({ promoFilm }: PromoFilmComponentProps): JSX.Element {
       <header className="page-header film-card__head">
         <MainLogo />
 
-        <ul className="user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
-            </div>
-          </li>
-          <li className="user-block__item">
-            <Link to="/" className="user-block__link">
-              Sign out
-            </Link>
-          </li>
-        </ul>
+        {authorizationStatus !== AuthorizationStatus.AUTH ? (
+          <SignIn />
+        ) : (
+          <SignOut />
+        )}
       </header>
       <div className="film-card__wrap">
         <div className="film-card__info">
@@ -57,23 +48,29 @@ function PromoFilm({ promoFilm }: PromoFilmComponentProps): JSX.Element {
             </p>
 
             <div className="film-card__buttons">
-              <Link to={`/player/${id}`} className="btn btn--play film-card__button" type="button">
+              <Link
+                to={`/player/${id}`}
+                className="btn btn--play film-card__button"
+                type="button"
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s" />
                 </svg>
                 <span>Play</span>
               </Link>
-              <Link
-                to="/mylist"
-                className="btn btn--list film-card__button"
-                type="button"
-              >
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-                <span className="film-card__count">{userFilmsNumber}</span>
-              </Link>
+              {authorizationStatus === AuthorizationStatus.AUTH && (
+                <Link
+                  to="/mylist"
+                  className="btn btn--list film-card__button"
+                  type="button"
+                >
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
+                  </svg>
+                  <span>My list</span>
+                  <span className="film-card__count">{userFilmsNumber}</span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

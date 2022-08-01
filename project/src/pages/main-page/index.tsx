@@ -6,15 +6,14 @@ import {
   Loader,
 } from '../../components';
 
-import { useAppSelector } from '../../hooks';
-
+import { useMainPage } from './useMainPage';
 
 function MainPage(): JSX.Element {
-  const { filmsList, promoFilm } = useAppSelector((state) => state);
+  const { isAllDataDownloaded, filmsList, promoFilm } = useMainPage();
 
   return (
     <main>
-      {filmsList.length > 0 && promoFilm ? (
+      {isAllDataDownloaded && promoFilm ? (
         <div className="page-content">
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>

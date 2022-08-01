@@ -26,7 +26,7 @@ function FilmCard({
       className="small-film-card catalog__films-card"
     >
       {isActive ? (
-        <VideoPlayer videoSrc={videoLink} posterImage={posterImage} id={id} />
+        <VideoPlayer id={id} videoSrc={videoLink} posterImage={posterImage} />
       ) : (
         <div className="small-film-card__link">
           <div className="small-film-card__image">

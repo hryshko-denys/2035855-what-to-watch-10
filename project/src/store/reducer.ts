@@ -1,12 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
 
+import { AuthorizationStatus } from '../components/const';
+
 import {
   changeGenre,
   showMoreFilms,
   resetFilmsList,
   loadFilmsList,
   loadPromoFilm,
-  setActiveFilmId,
+  requireAuthorization,
+  setUserData,
+  resetLogout,
 } from './action';
 
 import {
@@ -25,6 +29,9 @@ const initialState: InitialStateType = {
   promoFilm: null,
   isInitialStateLoading: true,
   activeFilmId: null,
+
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  userData: null,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -42,11 +49,18 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loadFilmsList, (state, action) => {
       state.filmsList = action.payload;
     })
-    .addCase(setActiveFilmId, (state, { payload }) => {
-      state.activeFilmId = payload;
-    })
     .addCase(loadPromoFilm, (state, { payload }) => {
       state.promoFilm = payload;
+    })
+    .addCase(setUserData, (state, { payload }) => {
+      state.userData = payload;
+    })
+    .addCase(resetLogout, (state) => {
+      state.userData = null;
+      state.authorizationStatus = AuthorizationStatus.NO_AUTH;
+    })
+    .addCase(requireAuthorization, (state, { payload }) => {
+      state.authorizationStatus = payload;
     });
 });
 

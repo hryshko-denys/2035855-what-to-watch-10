@@ -1,6 +1,11 @@
 import { MainLogo } from '../../components';
 
+import { useSignInHook } from './useSignInHook';
+
 function SignIn(): JSX.Element {
+  const { loginData, handleEmailChange, handleSubmit, handlePasswordChange } = useSignInHook();
+  const { email, password } = loginData;
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -10,7 +15,7 @@ function SignIn(): JSX.Element {
       </header>
 
       <div className="sign-in user-page__content">
-        <form action="#" className="sign-in__form">
+        <form onSubmit={handleSubmit} className="sign-in__form">
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input
@@ -19,6 +24,8 @@ function SignIn(): JSX.Element {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
+                value={email}
+                onChange={handleEmailChange}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">
                 Email address
@@ -31,6 +38,8 @@ function SignIn(): JSX.Element {
                 placeholder="Password"
                 name="user-password"
                 id="user-password"
+                value={password}
+                onChange={handlePasswordChange}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">
                 Password
