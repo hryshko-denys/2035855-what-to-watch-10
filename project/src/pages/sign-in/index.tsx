@@ -3,7 +3,13 @@ import { MainLogo } from '../../components';
 import { useSignInHook } from './useSignInHook';
 
 function SignIn(): JSX.Element {
-  const { loginData, handleEmailChange, handleSubmit, handlePasswordChange } = useSignInHook();
+  const {
+    loginData,
+    handleEmailChange,
+    handleSubmit,
+    handlePasswordChange,
+    errorText,
+  } = useSignInHook();
   const { email, password } = loginData;
 
   return (
@@ -16,6 +22,11 @@ function SignIn(): JSX.Element {
 
       <div className="sign-in user-page__content">
         <form onSubmit={handleSubmit} className="sign-in__form">
+          {errorText && (
+            <div className="sign-in__message">
+              <p>{errorText}</p>
+            </div>
+          )}
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input
@@ -27,7 +38,10 @@ function SignIn(): JSX.Element {
                 value={email}
                 onChange={handleEmailChange}
               />
-              <label className="sign-in__label visually-hidden" htmlFor="user-email">
+              <label
+                className="sign-in__label visually-hidden"
+                htmlFor="user-email"
+              >
                 Email address
               </label>
             </div>
@@ -41,7 +55,10 @@ function SignIn(): JSX.Element {
                 value={password}
                 onChange={handlePasswordChange}
               />
-              <label className="sign-in__label visually-hidden" htmlFor="user-password">
+              <label
+                className="sign-in__label visually-hidden"
+                htmlFor="user-password"
+              >
                 Password
               </label>
             </div>

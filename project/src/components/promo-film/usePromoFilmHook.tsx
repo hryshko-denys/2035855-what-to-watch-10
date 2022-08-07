@@ -1,13 +1,11 @@
 import { useAppSelector } from '../../hooks';
 
 export const usePromoFilmHook = () => {
-  const { filmsList, authorizationStatus } = useAppSelector(
+  const { authorizationStatus, favoriteList } = useAppSelector(
     (state) => state
   );
 
-  const userFilmsNumber = filmsList.filter(
-    ({ isFavorite }) => isFavorite
-  ).length;
+  const userFilmsNumber = favoriteList ? favoriteList.length : 0;
 
   return {
     userFilmsNumber,

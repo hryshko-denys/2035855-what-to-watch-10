@@ -10,8 +10,6 @@ import NotFoundPage from './not-found-page';
 import Player from './player';
 import PlayerPause from './player-pause';
 import SignIn from './sign-in';
-import SignInError from './sign-in-error';
-import SignInMessage from './sign-in-message';
 
 export {
   AddReview,
@@ -26,6 +24,4 @@ export {
   Player,
   PlayerPause,
   SignIn,
-  SignInError,
-  SignInMessage
 };

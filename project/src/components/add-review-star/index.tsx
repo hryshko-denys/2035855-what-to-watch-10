@@ -3,10 +3,11 @@ import { ChangeEvent } from 'react';
 type AddReviewStarComponentProps = {
   id: string,
   isChecked: boolean,
+  isDisabled: boolean,
   handleRatingChange: (event: ChangeEvent<HTMLInputElement>) => void,
 }
 
-function AddReviewStar({ id, isChecked, handleRatingChange }: AddReviewStarComponentProps): JSX.Element {
+function AddReviewStar({ id, isChecked, isDisabled, handleRatingChange }: AddReviewStarComponentProps): JSX.Element {
   return (
     <>
       <input
@@ -15,6 +16,7 @@ function AddReviewStar({ id, isChecked, handleRatingChange }: AddReviewStarCompo
         type="radio"
         name="rating"
         value={id}
+        disabled={isDisabled}
         checked={isChecked}
         onChange={handleRatingChange}
       />

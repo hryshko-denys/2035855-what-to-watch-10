@@ -2,7 +2,7 @@ import { store } from '../store/index.js';
 
 import { AuthorizationStatus } from '../components/const';
 
-import { FilmsListType } from './FilmsListType';
+import { FilmsListType, ActiveFilmType } from './FilmsListType';
 import { UserData } from './auth-data.js';
 
 export type State = ReturnType<typeof store.getState>;
@@ -15,7 +15,10 @@ export type InitialStateType = {
   activeFilmsCardsNumber: number,
   promoFilm: null | FilmsListType,
   isInitialStateLoading: boolean,
-  activeFilmId: null | number,
+  isCommentError: boolean,
+  isFilmDataLoading: boolean,
+  activeFilm: null | ActiveFilmType,
   authorizationStatus: AuthorizationStatus,
   userData: null | UserData,
+  favoriteList: null | FilmsListType[],
 }

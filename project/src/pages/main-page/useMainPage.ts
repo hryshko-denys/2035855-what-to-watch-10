@@ -8,7 +8,7 @@ export const useMainPage = () => {
   );
 
   const isAllDataDownloaded =
-    filmsList.length > 0 &&
+    filmsList.length &&
     promoFilm &&
     authorizationStatus !== AuthorizationStatus.UNKNOWN;
 
