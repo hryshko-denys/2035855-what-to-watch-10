@@ -139,9 +139,7 @@ export const loadFilmData = createAsyncThunk<
   }
 >('data/setActiveFilm', async ({ id }, { dispatch, extra: api }) => {
   try {
-    const filmInfo = await api.get(`/films/${id}`);
-    const comments = await api.get(`/comments/${id}`);
-    const similarFilms = await api.get(`/films/${id}/similar`);
+    const [filmInfo, comments, similarFilms] = await Promise.all([api.get(`/films/${id}`), api.get(`/comments/${id}`), api.get(`/films/${id}/similar`)]);
 
     dispatch(
       setActiveFilm({

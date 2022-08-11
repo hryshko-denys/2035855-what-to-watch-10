@@ -50,7 +50,7 @@ function MovieDetailsTop({
                 </svg>
                 <span>My list</span>
                 <span className="film-card__count">
-                  {favoriteList ? favoriteList.length : 0}
+                  {favoriteList?.length || 0}
                 </span>
               </Link>
               <Link

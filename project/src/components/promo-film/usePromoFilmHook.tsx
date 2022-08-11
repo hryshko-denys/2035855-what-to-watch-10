@@ -5,7 +5,7 @@ export const usePromoFilmHook = () => {
     (state) => state
   );
 
-  const userFilmsNumber = favoriteList ? favoriteList.length : 0;
+  const userFilmsNumber = favoriteList?.length || 0;
 
   return {
     userFilmsNumber,

@@ -7,7 +7,7 @@ import { sendComment } from '../../store/api-actions';
 
 import { CommentFormType } from '../../types/FilmsListType';
 
-const ratingArray = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+import { getValidStatus } from './utils';
 
 export const useFormAddReviewHook = (id: number) => {
   const { isCommentError } = useAppSelector((state) => state);
@@ -30,20 +30,19 @@ export const useFormAddReviewHook = (id: number) => {
       rating: +event.target.value,
     });
 
-    const isValidForm =
-      formData.comment.length >= 50 && formData.comment.length < 400;
+    const isValidForm = getValidStatus(formData.comment.length, formData.rating);
     setIsFormValid(isValidForm);
   };
 
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const text = event.target.value;
+    const comment = event.target.value;
+
     setFormData({
       ...formData,
-      comment: text,
+      comment,
     });
 
-    const isValidForm =
-      text.length >= 50 && text.length < 400 && !!formData.rating;
+    const isValidForm = getValidStatus(formData.comment.length, formData.rating);
     setIsFormValid(isValidForm);
   };
 
@@ -57,7 +56,6 @@ export const useFormAddReviewHook = (id: number) => {
   return {
     isCommentSending,
     isFormValid,
-    ratingArray,
     formData,
     handleRatingChange,
     handleTextChange,

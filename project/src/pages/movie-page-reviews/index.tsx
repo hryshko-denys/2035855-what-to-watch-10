@@ -309,7 +309,7 @@ function MoviePageReviews(): JSX.Element {
           <MainLogo isLight />
 
           <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+            <p>© 2022 What to watch Ltd.</p>
           </div>
         </footer>
       </div>

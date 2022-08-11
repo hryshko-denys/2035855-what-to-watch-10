@@ -16,6 +16,8 @@ import { useMoviePageHook } from './hooks';
 function MoviePage(): JSX.Element {
   const { isFilmDataLoading, activeFilm, authorizationStatus } = useMoviePageHook();
 
+  const isUserUnAuthorized = authorizationStatus !== AuthorizationStatus.AUTH;
+
   return (
     <>
       {!isFilmDataLoading && activeFilm ? (
@@ -35,7 +37,7 @@ function MoviePage(): JSX.Element {
 
               <ul className="user-block">
                 <li className="user-block__item">
-                  {authorizationStatus !== AuthorizationStatus.AUTH ? (
+                  {isUserUnAuthorized ? (
                     <SignIn />
                   ) : (
                     <SignOut />
@@ -68,7 +70,7 @@ function MoviePage(): JSX.Element {
             <MainLogo isLight />
 
             <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
+              <p>© 2022 What to watch Ltd.</p>
             </div>
           </footer>
         </div>

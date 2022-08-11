@@ -13,9 +13,7 @@ export const useCurrentFilmHook = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!activeFilm) {
-      dispatch(loadFilmData({ id }));
-    }
+    !activeFilm && dispatch(loadFilmData({ id }));
 
     setIsFilmLoading(false);
   }, [activeFilm]);
