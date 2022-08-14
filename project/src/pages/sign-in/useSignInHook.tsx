@@ -3,11 +3,16 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { store } from '../../store';
 import { loginAction } from '../../store/api-actions';
 
+import { EMAIL_REGEX, PASSWORD_REGEX } from './utils';
+
 export const useSignInHook = () => {
-  const [loginData, setLoginData] = useState({
+  const INITIAL_STATE = {
     email: '',
     password: '',
-  });
+  };
+
+  const [loginData, setLoginData] = useState(INITIAL_STATE);
+  const [error, setError] = useState<null | string>(null);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLoginData({
@@ -24,19 +29,50 @@ export const useSignInHook = () => {
   };
 
   const resetData = () => {
-    setLoginData({
-      email: '',
-      password: '',
-    });
+    setLoginData(INITIAL_STATE);
   };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
+    if (!EMAIL_REGEX.test(loginData.email)) {
+      setError('email');
+      return;
+    }
+
+    if (!PASSWORD_REGEX.test(loginData.password)) {
+      setError('password');
+      return;
+    }
 
     store.dispatch(loginAction(loginData));
 
     resetData();
   };
 
-  return { loginData, handleEmailChange, handleSubmit, handlePasswordChange };
+  const getErrorText = () => {
+    switch (error) {
+      case 'email':
+        return 'Please enter a valid email address';
+
+      case 'password':
+        return 'Please enter a valid password';
+
+      case 'invalid-data':
+        return 'We can’t recognize this email and password combination. Please try again.';
+
+      default:
+        return null;
+    }
+  };
+
+  const errorText = getErrorText();
+
+  return {
+    loginData,
+    errorText,
+    handleEmailChange,
+    handleSubmit,
+    handlePasswordChange,
+  };
 };

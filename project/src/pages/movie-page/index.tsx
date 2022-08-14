@@ -1,26 +1,32 @@
-import { Link } from 'react-router-dom';
-
 import {
   FilmList,
   MainLogo,
   MovieDetailsTop,
   MovieDetailsBottom,
+  Loader,
+  SignOut,
+  SignIn,
 } from '../../components';
+
+import { AuthorizationStatus } from '../../components/const';
 
 import { useMoviePageHook } from './hooks';
 
+
 function MoviePage(): JSX.Element {
-  const { currentFilm, myList, moreLikeThisList, id } = useMoviePageHook();
+  const { isFilmDataLoading, activeFilm, authorizationStatus } = useMoviePageHook();
+
+  const isUserUnAuthorized = authorizationStatus !== AuthorizationStatus.AUTH;
 
   return (
     <>
-      {currentFilm && id ? (
+      {!isFilmDataLoading && activeFilm ? (
         <section className="film-card film-card--full">
           <div className="film-card__hero">
             <div className="film-card__bg">
               <img
-                src={currentFilm.backgroundImage}
-                alt={currentFilm.name}
+                src={activeFilm.filmInfo.backgroundImage}
+                alt={activeFilm.filmInfo.name}
               />
             </div>
 
@@ -31,49 +37,44 @@ function MoviePage(): JSX.Element {
 
               <ul className="user-block">
                 <li className="user-block__item">
-                  <div className="user-block__avatar">
-                    <img
-                      src="img/avatar.jpg"
-                      alt="User avatar"
-                      width="63"
-                      height="63"
-                    />
-                  </div>
-                </li>
-                <li className="user-block__item">
-                  <Link to="/" className="user-block__link">
-                    Sign out
-                  </Link>
+                  {isUserUnAuthorized ? (
+                    <SignIn />
+                  ) : (
+                    <SignOut />
+                  )}
                 </li>
               </ul>
             </header>
 
             <MovieDetailsTop
-              currentFilm={currentFilm}
-              id={id}
-              myListLength={myList.length}
+              currentFilm={activeFilm.filmInfo}
+              id={activeFilm.filmInfo.id}
             />
           </div>
 
-          <MovieDetailsBottom currentFilm={currentFilm} />
+          <MovieDetailsBottom currentFilm={activeFilm.filmInfo} />
         </section>
-      ) : null}
+      ) : (
+        <Loader />
+      )}
 
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
+      {!isFilmDataLoading && activeFilm && (
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
 
-          <FilmList filmsList={moreLikeThisList} />
-        </section>
+            <FilmList filmsList={activeFilm.similarFilms} />
+          </section>
 
-        <footer className="page-footer">
-          <MainLogo isLight />
+          <footer className="page-footer">
+            <MainLogo isLight />
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
-      </div>
+            <div className="copyright">
+              <p>© 2022 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
+      )}
     </>
   );
 }

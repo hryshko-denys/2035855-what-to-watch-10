@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom';
 
 import { FilmsListType } from '../../types/FilmsListType';
 
+import { useAppSelector } from '../../hooks';
+
 type MovieDetailsTopComponentProps = {
   currentFilm: FilmsListType;
-  id: string;
-  myListLength: number;
+  id: number;
 };
 
-function MovieDetailsTop({ currentFilm, id, myListLength }: MovieDetailsTopComponentProps): JSX.Element {
+function MovieDetailsTop({
+  currentFilm,
+  id,
+}: MovieDetailsTopComponentProps): JSX.Element {
+  const { authorizationStatus, favoriteList } = useAppSelector(
+    (state) => state
+  );
   const { name, genre, released } = currentFilm;
 
   return (
@@ -31,20 +38,29 @@ function MovieDetailsTop({ currentFilm, id, myListLength }: MovieDetailsTopCompo
             </svg>
             <span>Play</span>
           </Link>
-          <Link
-            to="/mylist"
-            className="btn btn--list film-card__button"
-            type="button"
-          >
-            <svg viewBox="0 0 19 20" width="19" height="20">
-              <use xlinkHref="#add"></use>
-            </svg>
-            <span>My list</span>
-            <span className="film-card__count">{myListLength}</span>
-          </Link>
-          <Link to={`/films/${id}/review`} className="btn film-card__button">
-            Add review
-          </Link>
+          {authorizationStatus === 'AUTH' && (
+            <>
+              <Link
+                to="/mylist"
+                className="btn btn--list film-card__button"
+                type="button"
+              >
+                <svg viewBox="0 0 19 20" width="19" height="20">
+                  <use xlinkHref="#add"></use>
+                </svg>
+                <span>My list</span>
+                <span className="film-card__count">
+                  {favoriteList?.length || 0}
+                </span>
+              </Link>
+              <Link
+                to={`/films/${id}/review`}
+                className="btn film-card__button"
+              >
+                Add review
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

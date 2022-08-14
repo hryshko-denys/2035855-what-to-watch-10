@@ -1,9 +1,22 @@
-import { useAppSelector } from '../hooks';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { useAppSelector, useAppDispatch } from '../hooks';
+
+import { loadFilmData } from '../store/api-actions';
 
 export const useCurrentFilmHook = () => {
-  const { filmsList, activeFilmId } = useAppSelector((state) => state);
+  const { activeFilm, authorizationStatus } = useAppSelector((state) => state);
+  const [isFilmLoading, setIsFilmLoading] = useState(true);
 
-  const currentFilm = activeFilmId ? filmsList.find(({ id }) => id === activeFilmId) : null;
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
 
-  return { currentFilm, id: activeFilmId };
+  useEffect(() => {
+    !activeFilm && dispatch(loadFilmData({ id }));
+
+    setIsFilmLoading(false);
+  }, [activeFilm]);
+
+  return { activeFilm, isFilmLoading, authorizationStatus };
 };

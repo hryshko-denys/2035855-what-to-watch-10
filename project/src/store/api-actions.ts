@@ -9,6 +9,10 @@ import {
   redirectToRoute,
   setUserData,
   resetLogout,
+  setFavoriteList,
+  setFilmDataLoading,
+  setActiveFilm,
+  setCommentError,
 } from './action';
 
 import { APIRoute } from '../services/const';
@@ -17,7 +21,7 @@ import { AppDispatch, State } from '../types/state';
 
 import { saveToken } from '../services/token';
 
-import { FilmsListType } from '../types/FilmsListType';
+import { FilmsListType, FilmId, CommentFormRequest } from '../types/FilmsListType';
 import { AuthorizationStatus } from '../components/const';
 import { UserData, AuthData } from '../types/auth-data';
 
@@ -79,14 +83,18 @@ export const loginAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('user/login', async ({ email, password }, { dispatch, extra: api }) => {
-  const {
-    data: userData,
-  } = await api.post<UserData>(APIRoute.Login, { email, password });
+  const { data: userData } = await api.post<UserData>(APIRoute.Login, {
+    email,
+    password,
+  });
   saveToken(userData.token);
 
   dispatch(setUserData(userData));
   dispatch(requireAuthorization(AuthorizationStatus.AUTH));
   dispatch(redirectToRoute(AppRoute.Root));
+
+  const { data } = await api.get<FilmsListType[]>(APIRoute.Favorite);
+  dispatch(setFavoriteList(data));
 });
 
 export const logoutAction = createAsyncThunk<
@@ -102,4 +110,46 @@ export const logoutAction = createAsyncThunk<
 
   dispatch(resetLogout());
   dispatch(redirectToRoute(AppRoute.Login));
+});
+
+export const sendComment = createAsyncThunk<
+  void,
+  CommentFormRequest,
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('user/send-comment', async ({ data , id }, { dispatch, extra: api }) => {
+  try {
+    await api.post(`/comments/${id}`, { ...data });
+    dispatch(redirectToRoute(`films/${id}`));
+  } catch {
+    dispatch(setCommentError(true));
+  }
+});
+
+export const loadFilmData = createAsyncThunk<
+  void,
+  FilmId,
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/setActiveFilm', async ({ id }, { dispatch, extra: api }) => {
+  try {
+    const [filmInfo, comments, similarFilms] = await Promise.all([api.get(`/films/${id}`), api.get(`/comments/${id}`), api.get(`/films/${id}/similar`)]);
+
+    dispatch(
+      setActiveFilm({
+        filmInfo: filmInfo.data,
+        comments: comments.data,
+        similarFilms: similarFilms.data,
+      })
+    );
+    dispatch(setFilmDataLoading(false));
+  } catch {
+    dispatch(redirectToRoute(AppRoute.NotFoundPage));
+  }
 });

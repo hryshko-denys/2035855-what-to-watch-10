@@ -1,19 +1,27 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 
+import { setFilmDataLoading } from '../../store/action';
+import { loadFilmData } from '../../store/api-actions';
 
 export const useMoviePageHook = () => {
-  const { filmsList } = useAppSelector((state) => state);
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
-  const currentFilm = id ? filmsList.find((film) => film.id === +id) : null;
+  useEffect(() => {
+    dispatch(setFilmDataLoading(true));
+    dispatch(loadFilmData({ id }));
 
-  const myList = filmsList.filter(({ isFavorite }) => isFavorite);
+    return () => {
+      dispatch(setFilmDataLoading(true));
+    };
+  }, [id]);
 
-  const moreLikeThisList = id
-    ? filmsList.filter((film) => film.id !== +id).slice(0, 4)
-    : [];
+  const { isFilmDataLoading, activeFilm, authorizationStatus } = useAppSelector(
+    (state) => state
+  );
 
-  return { currentFilm, myList, moreLikeThisList, id };
+  return { isFilmDataLoading, activeFilm, authorizationStatus };
 };

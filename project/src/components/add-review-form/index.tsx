@@ -2,24 +2,33 @@ import { AddReviewStar } from '../index';
 
 import { useFormAddReviewHook } from './hooks';
 
-function AddReviewForm(): JSX.Element {
+import { RATING_ARRAY } from './utils';
+
+type AddReviewFormType = {
+  id: number;
+}
+
+function AddReviewForm({ id }: AddReviewFormType): JSX.Element {
   const {
-    ratingArray,
+    isCommentSending,
+    isFormValid,
     formData,
     handleRatingChange,
     handleTextChange,
     handleSubmit,
-  } = useFormAddReviewHook();
+    isCommentError,
+  } = useFormAddReviewHook(id);
 
   return (
     <form onSubmit={handleSubmit} className="add-review__form">
       <div className="rating">
         <div className="rating__stars">
-          {ratingArray.map((star) => (
+          {RATING_ARRAY.map((star) => (
             <AddReviewStar
               key={star}
-              id={star}
+              id={star.toString()}
               isChecked={star === formData.rating}
+              isDisabled={isCommentSending}
               handleRatingChange={handleRatingChange}
             />
           ))}
@@ -32,15 +41,21 @@ function AddReviewForm(): JSX.Element {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          value={formData.textReview}
+          disabled={isCommentSending}
+          value={formData.comment}
           onChange={handleTextChange}
         />
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">
+          <button disabled={!isFormValid || isCommentSending} className="add-review__btn" type="submit">
             Post
           </button>
         </div>
       </div>
+      {isCommentError && (
+        <div className="sign-in__message">
+          <p>Can&apos;t send your comment. Please try again later.</p>
+        </div>
+      )}
     </form>
   );
 }

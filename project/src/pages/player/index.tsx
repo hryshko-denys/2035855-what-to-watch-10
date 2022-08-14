@@ -1,19 +1,21 @@
+import { Loader } from '../../components';
+
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
 function Player(): JSX.Element {
-  const { currentFilm } = useCurrentFilmHook();
+  const { activeFilm, isFilmLoading } = useCurrentFilmHook();
 
-  const video = currentFilm ? currentFilm.videoLink : null;
+  const video = activeFilm ? activeFilm.filmInfo.videoLink : null;
 
   return (
     <div className="player">
-      {video ? (
+      {!isFilmLoading && video ? (
         <video
           src={video}
           className="player__video"
           poster="img/player-poster.jpg"
         />
-      ) : null}
+      ) : <Loader />}
 
       <button type="button" className="player__exit">
         Exit

@@ -11,6 +11,10 @@ import {
   requireAuthorization,
   setUserData,
   resetLogout,
+  setFavoriteList,
+  setFilmDataLoading,
+  setActiveFilm,
+  setCommentError,
 } from './action';
 
 import {
@@ -28,10 +32,14 @@ const initialState: InitialStateType = {
   activeFilmsCardsNumber: INITIAL_FILM_CARDS_NUMBER,
   promoFilm: null,
   isInitialStateLoading: true,
-  activeFilmId: null,
+  favoriteList: null,
+  isCommentError: false,
 
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   userData: null,
+
+  activeFilm: null,
+  isFilmDataLoading: true,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -55,12 +63,24 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setUserData, (state, { payload }) => {
       state.userData = payload;
     })
+    .addCase(setFavoriteList, (state, { payload }) => {
+      state.favoriteList = payload;
+    })
     .addCase(resetLogout, (state) => {
       state.userData = null;
       state.authorizationStatus = AuthorizationStatus.NO_AUTH;
     })
     .addCase(requireAuthorization, (state, { payload }) => {
       state.authorizationStatus = payload;
+    })
+    .addCase(setFilmDataLoading, (state, { payload }) => {
+      state.isFilmDataLoading = payload;
+    })
+    .addCase(setCommentError, (state, { payload }) => {
+      state.isCommentError = payload;
+    })
+    .addCase(setActiveFilm, (state, { payload }) => {
+      state.activeFilm = payload;
     });
 });
 

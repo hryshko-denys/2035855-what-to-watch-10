@@ -16,26 +16,58 @@ import {
   NotFoundPage,
 } from '../../pages';
 
+import { AuthorizationStatus } from '../const';
+
+import { InitialStateType } from '../../types/state';
+
 function App(): JSX.Element {
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const { authorizationStatus } = useAppSelector(
+    (state: InitialStateType) => state
+  );
 
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/login' element={<SignIn />} />
+        <Route path="/" element={<MainPage />} />
         <Route
-          path='/mylist'
+          path="/login"
           element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRoute
+              authorizationStatus={authorizationStatus}
+              invalidStatus={AuthorizationStatus.AUTH}
+              navigatePath="/"
+            >
+              <SignIn />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mylist"
+          element={
+            <PrivateRoute
+              authorizationStatus={authorizationStatus}
+              validStatus={AuthorizationStatus.AUTH}
+              navigatePath="/login"
+            >
               <MyList />
             </PrivateRoute>
           }
         />
-        <Route path='/films/:id' element={<MoviePage />} />
-        <Route path='/films/:id/review' element={<AddReview />} />
-        <Route path='/player/:id' element={<Player />} />
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path="/films/:id" element={<MoviePage />} />
+        <Route
+          path="/films/:id/review"
+          element={
+            <PrivateRoute
+              authorizationStatus={authorizationStatus}
+              validStatus={AuthorizationStatus.AUTH}
+              navigatePath="/login"
+            >
+              <AddReview />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/player/:id" element={<Player />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </HistoryRouter>
   );

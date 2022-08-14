@@ -1,47 +1,65 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
-export const useFormAddReviewHook = () => {
-  const ratingArray = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
-  const [formData, setFormData] = useState({
-    rating: '7',
-    textReview: '',
+import { setCommentError } from '../../store/action';
+import { sendComment } from '../../store/api-actions';
+
+import { CommentFormType } from '../../types/FilmsListType';
+
+import { getValidStatus } from './utils';
+
+export const useFormAddReviewHook = (id: number) => {
+  const { isCommentError } = useAppSelector((state) => state);
+  const [formData, setFormData] = useState<CommentFormType>({
+    rating: null,
+    comment: '',
   });
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [isCommentSending, setIsCommentSending] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => () => {
+    dispatch(setCommentError(false));
+  }, []);
 
   const handleRatingChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      rating: event.target.value,
+      rating: +event.target.value,
     });
+
+    const isValidForm = getValidStatus(formData.comment.length, formData.rating);
+    setIsFormValid(isValidForm);
   };
 
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const comment = event.target.value;
+
     setFormData({
       ...formData,
-      textReview: event.target.value,
+      comment,
     });
-  };
 
-  const resetData = () => {
-    setFormData({
-      textReview: '',
-      rating: '7',
-    });
+    const isValidForm = getValidStatus(formData.comment.length, formData.rating);
+    setIsFormValid(isValidForm);
   };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    setIsCommentSending(true);
 
-    //send data
-
-    resetData();
+    dispatch(sendComment({ data: formData, id }));
   };
 
   return {
-    ratingArray,
+    isCommentSending,
+    isFormValid,
     formData,
     handleRatingChange,
     handleTextChange,
     handleSubmit,
+    isCommentError,
   };
 };
