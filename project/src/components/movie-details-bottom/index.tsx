@@ -1,23 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Tabs } from '../index';
 
-import { FilmsListType } from '../../types/FilmsListType';
+import {ActiveFilmType} from '../../types/FilmsListType';
+import {Outlet} from 'react-router-dom';
 
 type MovieDetailsBottomComponentProps = {
-  currentFilm: FilmsListType;
+  currentFilm: ActiveFilmType;
 };
 
 function MovieDetailsBottom({
   currentFilm,
 }: MovieDetailsBottomComponentProps): JSX.Element {
   const {
-    rating,
-    description,
-    director,
-    starring,
-    scoresCount,
+    id,
     posterImage,
     name,
-  } = currentFilm;
+  } = currentFilm.filmInfo;
 
   return (
     <div className="film-card__wrap film-card__translate-top">
@@ -27,45 +24,9 @@ function MovieDetailsBottom({
         </div>
 
         <div className="film-card__desc">
-          <nav className="film-nav film-card__nav">
-            <ul className="film-nav__list">
-              <li className="film-nav__item film-nav__item--active">
-                <Link to="/" className="film-nav__link">
-                  Overview
-                </Link>
-              </li>
-              <li className="film-nav__item">
-                <Link to="/" className="film-nav__link">
-                  Details
-                </Link>
-              </li>
-              <li className="film-nav__item">
-                <Link to="/" className="film-nav__link">
-                  Reviews
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <Tabs filmId={id} />
 
-          <div className="film-rating">
-            <div className="film-rating__score">{scoresCount}</div>
-            <p className="film-rating__meta">
-              <span className="film-rating__level">Very good</span>
-              <span className="film-rating__count">{rating}</span>
-            </p>
-          </div>
-
-          <div className="film-card__text">
-            <p>{description}</p>
-
-            <p className="film-card__director">
-              <strong>Director: {director}</strong>
-            </p>
-
-            <p className="film-card__starring">
-              <strong>Starring: {starring}</strong>
-            </p>
-          </div>
+          <Outlet context={currentFilm} />
         </div>
       </div>
     </div>

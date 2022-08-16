@@ -52,7 +52,7 @@ function MoviePage(): JSX.Element {
             />
           </div>
 
-          <MovieDetailsBottom currentFilm={activeFilm.filmInfo} />
+          <MovieDetailsBottom currentFilm={activeFilm} />
         </section>
       ) : (
         <Loader />
