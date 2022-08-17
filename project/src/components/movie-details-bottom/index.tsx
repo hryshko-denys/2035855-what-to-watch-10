@@ -1,7 +1,8 @@
+import {Outlet} from 'react-router-dom';
+
 import { Tabs } from '../index';
 
 import {ActiveFilmType} from '../../types/FilmsListType';
-import {Outlet} from 'react-router-dom';
 
 type MovieDetailsBottomComponentProps = {
   currentFilm: ActiveFilmType;

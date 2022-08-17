@@ -17,6 +17,8 @@ import Tab from './tab';
 import FilmOverview from './film-overview';
 import FilmDetails from './film-details';
 import FilmReviews from './film-reviews';
+import DetailsBlock from './details-block';
+import Footer from './footer';
 
 export {
   FilmCard,
@@ -38,4 +40,6 @@ export {
   FilmOverview,
   FilmDetails,
   FilmReviews,
+  DetailsBlock,
+  Footer
 };

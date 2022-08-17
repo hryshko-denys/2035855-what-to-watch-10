@@ -1,9 +1,9 @@
 import {
   FilmList,
-  MainLogo,
   GenreList,
   PromoFilm,
   Loader,
+  Footer,
 } from '../../components';
 
 import { useMainPage } from './useMainPage';
@@ -25,13 +25,7 @@ function MainPage(): JSX.Element {
             <FilmList filmsList={filmsList} />
           </section>
 
-          <footer className="page-footer">
-            <MainLogo isLight />
-
-            <div className="copyright">
-              <p>© 2022 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer isLight />
         </div>
       ) : (
         <Loader />

@@ -5,9 +5,9 @@ import {useMovieDetails} from './useMovieDetails';
 import { ActiveFilmType} from '../../types/FilmsListType';
 
 function FilmOverview(): JSX.Element {
-  const activeFilm: ActiveFilmType = useOutletContext();
-  const { starringAdapted, ratingLevel } = useMovieDetails(activeFilm.filmInfo);
-  const { scoresCount, rating, description, director } = activeFilm.filmInfo;
+  const { filmInfo }: ActiveFilmType = useOutletContext();
+  const { starringAdapted, ratingLevel } = useMovieDetails(filmInfo);
+  const { scoresCount, rating, description, director } = filmInfo;
 
   return (
     <>

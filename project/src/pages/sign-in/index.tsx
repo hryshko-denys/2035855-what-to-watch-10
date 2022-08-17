@@ -1,4 +1,4 @@
-import { MainLogo } from '../../components';
+import {Footer, MainLogo} from '../../components';
 
 import { useSignInHook } from './useSignInHook';
 
@@ -71,13 +71,7 @@ function SignIn(): JSX.Element {
         </form>
       </div>
 
-      <footer className="page-footer">
-        <MainLogo />
-
-        <div className="copyright">
-          <p>© 2022 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
