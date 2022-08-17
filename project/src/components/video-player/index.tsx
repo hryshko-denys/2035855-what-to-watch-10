@@ -15,6 +15,7 @@ function VideoPlayer({ videoSrc, posterImage, id }: VideoPlayerProps): JSX.Eleme
         muted
         poster={posterImage}
         autoPlay
+        playsInline
       />
     </Link>
   );
