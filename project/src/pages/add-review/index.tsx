@@ -15,18 +15,16 @@ import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 function AddReview(): JSX.Element {
   const { activeFilm, isFilmLoading, authorizationStatus } =
     useCurrentFilmHook();
-  const filmName = activeFilm ? activeFilm.filmInfo.name : '';
-  const filmId = activeFilm ? activeFilm.filmInfo.id : '';
 
   return (
     <section className="film-card film-card--full">
-      {!isFilmLoading && filmName ? (
+      {!isFilmLoading && activeFilm ? (
         <>
           <div className="film-card__header">
             <div className="film-card__bg">
               <img
-                src="img/bg-the-grand-budapest-hotel.jpg"
-                alt="The Grand Budapest Hotel"
+                src={activeFilm.filmInfo.backgroundImage}
+                alt={activeFilm.filmInfo.name}
               />
             </div>
 
@@ -38,8 +36,8 @@ function AddReview(): JSX.Element {
               <nav className="breadcrumbs">
                 <ul className="breadcrumbs__list">
                   <li className="breadcrumbs__item">
-                    <Link to={`/films/${filmId}`} className="breadcrumbs__link">
-                      {filmName}
+                    <Link to={`/films/${activeFilm.filmInfo.id}`} className="breadcrumbs__link">
+                      {activeFilm.filmInfo.name}
                     </Link>
                   </li>
                   <li className="breadcrumbs__item">
@@ -59,8 +57,8 @@ function AddReview(): JSX.Element {
 
             <div className="film-card__poster film-card__poster--small">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={activeFilm.filmInfo.posterImage}
+                alt={activeFilm.filmInfo.name}
                 width="218"
                 height="327"
               />
@@ -68,7 +66,7 @@ function AddReview(): JSX.Element {
           </div>
 
           <div className="add-review">
-            <FormAddReview id={+filmId} />
+            <FormAddReview id={+activeFilm.filmInfo.id} />
           </div>
         </>
       ) : (
