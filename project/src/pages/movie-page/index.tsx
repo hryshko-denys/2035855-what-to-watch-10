@@ -6,6 +6,7 @@ import {
   Loader,
   SignOut,
   SignIn,
+  Footer,
 } from '../../components';
 
 import { AuthorizationStatus } from '../../components/const';
@@ -52,7 +53,7 @@ function MoviePage(): JSX.Element {
             />
           </div>
 
-          <MovieDetailsBottom currentFilm={activeFilm.filmInfo} />
+          <MovieDetailsBottom currentFilm={activeFilm} />
         </section>
       ) : (
         <Loader />
@@ -66,13 +67,7 @@ function MoviePage(): JSX.Element {
             <FilmList filmsList={activeFilm.similarFilms} />
           </section>
 
-          <footer className="page-footer">
-            <MainLogo isLight />
-
-            <div className="copyright">
-              <p>© 2022 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer isLight />
         </div>
       )}
     </>

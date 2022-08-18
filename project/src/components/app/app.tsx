@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks';
 import browserHistory from '../../browser-history';
 import HistoryRouter from '../../components/history-route/history-route';
 
-import { PrivateRoute } from '../../components';
+import {FilmOverview, PrivateRoute, FilmDetails, FilmReviews} from '../../components';
 import {
   MainPage,
   SignIn,
@@ -53,7 +53,11 @@ function App(): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path="/films/:id" element={<MoviePage />} />
+        <Route path="/films/:id" element={<MoviePage />}>
+          <Route index element={<FilmOverview />} />
+          <Route path="details" element={<FilmDetails />} />
+          <Route path="reviews" element={<FilmReviews />} />
+        </Route>
         <Route
           path="/films/:id/review"
           element={

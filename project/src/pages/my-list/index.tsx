@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { FilmCard, MainLogo } from '../../components';
+import {FilmCard, Footer, MainLogo} from '../../components';
 
 import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
@@ -51,13 +51,7 @@ function MyList(): JSX.Element {
         </div>
       </section>
 
-      <footer className="page-footer">
-        <MainLogo isLight />
-
-        <div className="copyright">
-          <p>© 2022 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer isLight />
     </div>
   );
 }

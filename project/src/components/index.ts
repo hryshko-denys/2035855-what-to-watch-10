@@ -12,6 +12,13 @@ import PromoFilm from './promo-film';
 import Loader from './loader';
 import SignOut from './sign-out';
 import SignIn from './sign-in';
+import Tabs from './tabs';
+import Tab from './tab';
+import FilmOverview from './film-overview';
+import FilmDetails from './film-details';
+import FilmReviews from './film-reviews';
+import DetailsBlock from './details-block';
+import Footer from './footer';
 
 export {
   FilmCard,
@@ -28,4 +35,11 @@ export {
   Loader,
   SignOut,
   SignIn,
+  Tabs,
+  Tab,
+  FilmOverview,
+  FilmDetails,
+  FilmReviews,
+  DetailsBlock,
+  Footer
 };

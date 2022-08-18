@@ -3,17 +3,21 @@ import { Loader } from '../../components';
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
 function Player(): JSX.Element {
-  const { activeFilm, isFilmLoading } = useCurrentFilmHook();
+  const { activeFilm, isFilmLoading, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying } = useCurrentFilmHook();
 
   const video = activeFilm ? activeFilm.filmInfo.videoLink : null;
+  const image = activeFilm ? activeFilm.filmInfo.backgroundImage : null;
 
   return (
     <div className="player">
-      {!isFilmLoading && video ? (
+      {!isFilmLoading && video && image ? (
         <video
+          ref={videoRef}
+          onClick={togglePlayVideo}
           src={video}
           className="player__video"
-          poster="img/player-poster.jpg"
+          poster={image}
+          playsInline
         />
       ) : <Loader />}
 
@@ -24,24 +28,24 @@ function Player(): JSX.Element {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value="30" max="100" />
-            <div className="player__toggler" style={{ left: '30%' }}>
+            <progress className="player__progress" value={currentProgress} max="100" />
+            <div className="player__toggler" style={{ left: `${currentProgress}%` }}>
               Toggler
             </div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{timeToEnd}</div>
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play">
+          <button onClick={togglePlayVideo} type="button" className="player__play">
             <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
+              <use xlinkHref={isVideoPlaying ? '#pause' : '#play-s'}></use>
             </svg>
             <span>Play</span>
           </button>
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
+          <button onClick={toggleFullScreen} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"></use>
             </svg>

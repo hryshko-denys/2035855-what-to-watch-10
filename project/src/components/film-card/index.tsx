@@ -17,7 +17,7 @@ function FilmCard({
   setFilmId,
   resetFilmId,
 }: FilmCardComponentProps): JSX.Element {
-  const { id, previewImage, name, videoLink, posterImage } = film;
+  const { id, previewImage, name, previewVideoLink, posterImage } = film;
 
   return (
     <article
@@ -26,7 +26,7 @@ function FilmCard({
       className="small-film-card catalog__films-card"
     >
       {isActive ? (
-        <VideoPlayer id={id} videoSrc={videoLink} posterImage={posterImage} />
+        <VideoPlayer id={id} videoSrc={previewVideoLink} posterImage={posterImage} />
       ) : (
         <div className="small-film-card__link">
           <div className="small-film-card__image">
