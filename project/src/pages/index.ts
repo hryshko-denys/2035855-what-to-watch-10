@@ -4,7 +4,6 @@ import MoviePage from './movie-page';
 import MyList from './my-list';
 import NotFoundPage from './not-found-page';
 import Player from './player';
-import PlayerPause from './player-pause';
 import SignIn from './sign-in';
 
 export {
@@ -14,6 +13,5 @@ export {
   MyList,
   NotFoundPage,
   Player,
-  PlayerPause,
   SignIn,
 };

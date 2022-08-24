@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../hooks';
+import { useAppSelector, useAppDispatch } from './index';
 
 import { loadFilmData } from '../store/api-actions';
 
@@ -10,15 +10,17 @@ import {calculateLeftTime} from '../services/calculateLeftTime';
 export const useCurrentFilmHook = () => {
   const { activeFilm, authorizationStatus } = useAppSelector((state) => state);
 
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [isFilmLoading, setIsFilmLoading] = useState(true);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentProgress, setCurrentProgress] = useState(0);
   const [timeToEnd, setTimeToEnd] = useState('');
+  const [isVideoReadyToPlay, setIsVideoReadyToPlay] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const { id } = useParams();
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     !activeFilm && dispatch(loadFilmData({ id }));
@@ -66,5 +68,15 @@ export const useCurrentFilmHook = () => {
     }
   };
 
-  return { activeFilm, isFilmLoading, authorizationStatus, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying };
+  const checkLoading = () => {
+    if (videoRef.current) {
+      setIsVideoReadyToPlay(videoRef.current.readyState === 4);
+    }
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  return { activeFilm, isFilmLoading, authorizationStatus, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, isVideoReadyToPlay, timeToEnd, isVideoPlaying, checkLoading, goBack };
 };

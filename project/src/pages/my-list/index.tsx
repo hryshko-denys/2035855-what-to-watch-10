@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
-
-import {FilmCard, Footer, MainLogo} from '../../components';
+import {FilmCard, Footer, MainLogo, SignOut} from '../../components';
 
 import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
@@ -18,21 +16,7 @@ function MyList(): JSX.Element {
         <h1 className="page-title user-page__title">
           My list <span className="user-page__film-count">{userFilms.length}</span>
         </h1>
-        <ul className="user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
-            </div>
-          </li>
-          <li className="user-block__item">
-            <Link to="/" className="user-block__link">Sign out</Link>
-          </li>
-        </ul>
+        <SignOut />
       </header>
 
       <section className="catalog">
