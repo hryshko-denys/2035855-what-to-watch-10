@@ -3,7 +3,7 @@ import { Loader } from '../../components';
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
 function Player(): JSX.Element {
-  const { activeFilm, isFilmLoading, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying } = useCurrentFilmHook();
+  const { activeFilm, isFilmLoading, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying, checkLoading, isVideoReadyToPlay, goBack } = useCurrentFilmHook();
 
   const video = activeFilm ? activeFilm.filmInfo.videoLink : null;
   const image = activeFilm ? activeFilm.filmInfo.backgroundImage : null;
@@ -14,6 +14,7 @@ function Player(): JSX.Element {
         <video
           ref={videoRef}
           onClick={togglePlayVideo}
+          onLoadedData={checkLoading}
           src={video}
           className="player__video"
           poster={image}
@@ -21,7 +22,7 @@ function Player(): JSX.Element {
         />
       ) : <Loader />}
 
-      <button type="button" className="player__exit">
+      <button onClick={() => goBack()} type="button" className="player__exit">
         Exit
       </button>
 
@@ -43,7 +44,7 @@ function Player(): JSX.Element {
             </svg>
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
+          {!isVideoReadyToPlay && <div className="player__name">Loading ...</div>}
 
           <button onClick={toggleFullScreen} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
