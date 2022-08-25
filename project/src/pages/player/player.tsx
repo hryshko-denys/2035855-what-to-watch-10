@@ -8,9 +8,11 @@ function Player(): JSX.Element {
   const video = activeFilm ? activeFilm.filmInfo.videoLink : null;
   const image = activeFilm ? activeFilm.filmInfo.backgroundImage : null;
 
+  const isFilmLoaded = !isFilmLoading && video && image;
+
   return (
     <div className="player">
-      {!isFilmLoading && video && image ? (
+      {isFilmLoaded ? (
         <video
           ref={videoRef}
           onClick={togglePlayVideo}
@@ -22,7 +24,7 @@ function Player(): JSX.Element {
         />
       ) : <Loader />}
 
-      <button onClick={() => goBack()} type="button" className="player__exit">
+      <button onClick={goBack} type="button" className="player__exit">
         Exit
       </button>
 

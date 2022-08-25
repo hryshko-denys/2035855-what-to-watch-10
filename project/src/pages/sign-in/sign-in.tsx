@@ -10,13 +10,13 @@ function SignIn(): JSX.Element {
     handlePasswordChange,
     errorText,
   } = useSignInHook();
+
   const { email, password } = loginData;
 
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <MainLogo />
-
         <h1 className="page-title user-page__title">Sign in</h1>
       </header>
 
@@ -45,6 +45,7 @@ function SignIn(): JSX.Element {
                 Email address
               </label>
             </div>
+
             <div className="sign-in__field">
               <input
                 className="sign-in__input"

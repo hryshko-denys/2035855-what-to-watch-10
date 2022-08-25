@@ -1,9 +1,10 @@
 import {useOutletContext} from 'react-router-dom';
 
-import {ActiveFilmType} from '../../types/FilmsListType';
+import {useFilmReviews} from './useFilmReviews';
 
 import FilmComment from '../film-comment';
-import {useFilmReviews} from './useFilmReviews';
+
+import {ActiveFilmType} from '../../types/FilmsListType';
 
 function FilmReviews(): JSX.Element {
   const activeFilm: ActiveFilmType = useOutletContext();

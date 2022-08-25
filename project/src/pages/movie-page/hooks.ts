@@ -20,7 +20,7 @@ export const useMoviePageHook = () => {
     return () => {
       dispatch(setFilmDataLoading(true));
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   const activeFilm = useAppSelector(getActiveFilm);
   const isFilmDataLoading = useAppSelector(getIsFilmDataLoading);

@@ -1,4 +1,5 @@
 export enum APIRoute {
+  Index = '/',
   Films = '/films',
   Promo = '/promo',
   Login = '/login',

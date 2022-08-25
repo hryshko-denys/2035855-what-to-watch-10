@@ -1,12 +1,14 @@
-
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace} from '../../services/const';
+
 import {FilmProcess} from '../../types/state';
+
 import {
   setActiveFilm,
   setCommentError,
   setFilmDataLoading,
 } from '../action';
+
+import {NameSpace} from '../../services/const';
 
 const initialState: FilmProcess = {
   isCommentError: false,

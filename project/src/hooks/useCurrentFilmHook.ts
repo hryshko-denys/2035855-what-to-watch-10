@@ -30,7 +30,7 @@ export const useCurrentFilmHook = () => {
     !activeFilm && dispatch(loadFilmData({ id }));
 
     setIsFilmLoading(false);
-  }, [activeFilm]);
+  }, [activeFilm, dispatch, id]);
 
   useEffect(() => {
     const updateVideoProgress = setInterval(() => {

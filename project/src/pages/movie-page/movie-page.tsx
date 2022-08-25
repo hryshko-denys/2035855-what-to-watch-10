@@ -19,9 +19,11 @@ function MoviePage(): JSX.Element {
 
   const isUserUnAuthorized = authorizationStatus !== AuthorizationStatus.AUTH;
 
+  const isFilmLoaded = !isFilmDataLoading && activeFilm;
+
   return (
     <>
-      {!isFilmDataLoading && activeFilm ? (
+      { isFilmLoaded ? (
         <section className="film-card film-card--full">
           <div className="film-card__hero">
             <div className="film-card__bg">
@@ -59,7 +61,7 @@ function MoviePage(): JSX.Element {
         <Loader />
       )}
 
-      {!isFilmDataLoading && activeFilm && (
+      {isFilmLoaded && (
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>

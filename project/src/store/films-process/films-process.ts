@@ -1,9 +1,7 @@
-
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace} from '../../services/const';
+
 import {FilmsProcess} from '../../types/state';
-import {INCREMENT_FILM_CARDS_NUMBER, INITIAL_FILM_CARDS_NUMBER, INITIAL_GENRE} from '../const';
-import {FilmsListType} from '../../types/FilmsListType';
+
 import {
   changeGenre,
   loadFilmsList,
@@ -12,6 +10,11 @@ import {
   showMoreFilms,
   toggleFilmInUserList
 } from '../action';
+
+import {NameSpace} from '../../services/const';
+import {INCREMENT_FILM_CARDS_NUMBER, INITIAL_FILM_CARDS_NUMBER, INITIAL_GENRE} from '../const';
+
+import {FilmsListType} from '../../types/FilmsListType';
 
 const initialState: FilmsProcess = {
   activeGenre: INITIAL_GENRE,

@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 
 import { changeGenre } from '../../store/action';
 
+import {getActiveGenre} from '../../store/films-process/selectors';
+
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import {getActiveGenre} from '../../store/films-process/selectors';
+import {APIRoute} from '../../services/const';
 
 type GenreItemComponentProps = {
   genre: string,
@@ -23,7 +25,7 @@ function GenreItem({ genre, value }: GenreItemComponentProps): JSX.Element {
       }`}
     >
       <Link
-        to="/"
+        to={APIRoute.Index}
         onClick={() => dispatch(changeGenre(value))}
         className="catalog__genres-link"
       >

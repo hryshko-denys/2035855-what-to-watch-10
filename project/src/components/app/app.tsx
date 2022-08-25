@@ -18,7 +18,8 @@ import {
   NotFoundPage,
 } from '../../pages';
 
-import { AuthorizationStatus } from '../const';
+import {AuthorizationStatus} from '../const';
+import {APIRoute} from '../../services/const';
 
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
@@ -28,26 +29,26 @@ function App(): JSX.Element {
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path={APIRoute.Index} element={<MainPage />} />
         <Route
-          path="/login"
+          path={APIRoute.Login}
           element={
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               invalidStatus={AuthorizationStatus.AUTH}
-              navigatePath="/"
+              navigatePath={APIRoute.Index}
             >
               <SignIn />
             </PrivateRoute>
           }
         />
         <Route
-          path="/mylist"
+          path={APIRoute.MyList}
           element={
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               validStatus={AuthorizationStatus.AUTH}
-              navigatePath="/login"
+              navigatePath={APIRoute.Login}
             >
               <MyList />
             </PrivateRoute>
@@ -64,7 +65,7 @@ function App(): JSX.Element {
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               validStatus={AuthorizationStatus.AUTH}
-              navigatePath="/login"
+              navigatePath={APIRoute.Login}
             >
               <AddReview />
             </PrivateRoute>

@@ -9,7 +9,7 @@ function MyListBtn({ id }: MyListBtnProps): JSX.Element {
 
   return (
     <button
-      onClick={() => toggleMyList()}
+      onClick={toggleMyList}
       className="btn btn--list film-card__button"
       type="button"
     >
