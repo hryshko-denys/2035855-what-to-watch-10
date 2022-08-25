@@ -28,7 +28,7 @@ function FilmList({ filmsList }: FilmsListComponentProps): JSX.Element {
     () => () => {
       dispatch(resetFilmsList());
     },
-    []
+    [dispatch, resetFilmsList]
   );
 
   return (

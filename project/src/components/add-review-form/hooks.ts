@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import {useState, ChangeEvent, FormEvent, useEffect} from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
@@ -7,7 +7,7 @@ import { sendComment } from '../../store/api-actions';
 
 import { CommentFormType } from '../../types/FilmsListType';
 
-import { getValidStatus } from './utils';
+import { getValidStatus } from '../form-rating/utils';
 
 import {getIsCommentError} from '../../store/film-process/selectors';
 
@@ -24,9 +24,9 @@ export const useFormAddReviewHook = (id: number) => {
 
   useEffect(() => () => {
     dispatch(setCommentError(false));
-  }, []);
+  }, [dispatch]);
 
-  const handleRatingChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleRatingChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
       ...formData,
       rating: +event.target.value,
