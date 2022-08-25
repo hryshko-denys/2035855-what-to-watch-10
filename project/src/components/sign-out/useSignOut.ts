@@ -4,10 +4,10 @@ import { logoutAction } from '../../store/api-actions';
 
 import { store } from '../../store';
 
+import {getUserData} from '../../store/user-process/selectors';
+
 export const useSignOut = () => {
-  const { userData } = useAppSelector(
-    (state) => state
-  );
+  const userData = useAppSelector(getUserData);
 
   const logout = () => {
     store.dispatch(logoutAction());

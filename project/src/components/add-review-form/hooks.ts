@@ -9,8 +9,10 @@ import { CommentFormType } from '../../types/FilmsListType';
 
 import { getValidStatus } from './utils';
 
+import {getIsCommentError} from '../../store/film-process/selectors';
+
 export const useFormAddReviewHook = (id: number) => {
-  const { isCommentError } = useAppSelector((state) => state);
+  const isCommentError = useAppSelector(getIsCommentError);
   const [formData, setFormData] = useState<CommentFormType>({
     rating: null,
     comment: '',

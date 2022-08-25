@@ -2,7 +2,7 @@ import { createAction } from '@reduxjs/toolkit';
 
 import { AuthorizationStatus } from '../components/const';
 import { UserData } from '../types/auth-data';
-import { FilmsListType, ActiveFilmType } from '../types/FilmsListType';
+import {FilmsListType, ActiveFilmType} from '../types/FilmsListType';
 
 export const changeGenre = createAction(
   'genre/changeGenre',
@@ -20,6 +20,7 @@ export const setUserData = createAction<UserData>('data/setUserData');
 export const setFavoriteList = createAction<FilmsListType[]>(
   'data/setFavoriteList'
 );
+export const toggleFilmInUserList = createAction<FilmsListType>('data/toggleFilmInUserList');
 export const setActiveFilm = createAction<ActiveFilmType>('data/setActiveFilm');
 export const setCommentError = createAction<boolean>('data/setCommentError');
 export const setFilmDataLoading = createAction<boolean>(

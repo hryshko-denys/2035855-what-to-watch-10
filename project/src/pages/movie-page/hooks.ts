@@ -6,6 +6,9 @@ import { useAppSelector, useAppDispatch } from '../../hooks';
 import { setFilmDataLoading } from '../../store/action';
 import { loadFilmData } from '../../store/api-actions';
 
+import {getActiveFilm, getIsFilmDataLoading} from '../../store/film-process/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+
 export const useMoviePageHook = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -19,9 +22,9 @@ export const useMoviePageHook = () => {
     };
   }, [id]);
 
-  const { isFilmDataLoading, activeFilm, authorizationStatus } = useAppSelector(
-    (state) => state
-  );
+  const activeFilm = useAppSelector(getActiveFilm);
+  const isFilmDataLoading = useAppSelector(getIsFilmDataLoading);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return { isFilmDataLoading, activeFilm, authorizationStatus };
 };

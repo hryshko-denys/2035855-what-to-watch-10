@@ -13,6 +13,7 @@ import {
   setFilmDataLoading,
   setActiveFilm,
   setCommentError,
+  toggleFilmInUserList,
 } from './action';
 
 import { APIRoute } from '../services/const';
@@ -21,7 +22,7 @@ import { AppDispatch, State } from '../types/state';
 
 import { saveToken } from '../services/token';
 
-import { FilmsListType, FilmId, CommentFormRequest } from '../types/FilmsListType';
+import { FilmsListType, FilmId, CommentFormRequest, FilmData } from '../types/FilmsListType';
 import { AuthorizationStatus } from '../components/const';
 import { UserData, AuthData } from '../types/auth-data';
 
@@ -49,7 +50,7 @@ export const fetchPromoFilmAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('data/loadFilmsList', async (_arg, { dispatch, extra: api }) => {
+>('data/loadPromoFilm', async (_arg, { dispatch, extra: api }) => {
   const { data } = await api.get<FilmsListType>(APIRoute.Promo);
 
   dispatch(loadPromoFilm(data));
@@ -152,4 +153,20 @@ export const loadFilmData = createAsyncThunk<
   } catch {
     dispatch(redirectToRoute(AppRoute.NotFoundPage));
   }
+});
+
+export const changeFilmInUserList = createAsyncThunk<
+  void,
+  FilmData,
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/toggleFilmInUserList', async ({ filmId, status }, { dispatch, extra: api }) => {
+  const { data: film } = await api.post<FilmsListType>(`/favorite/${filmId}/${status}`);
+
+  dispatch(
+    toggleFilmInUserList(film)
+  );
 });

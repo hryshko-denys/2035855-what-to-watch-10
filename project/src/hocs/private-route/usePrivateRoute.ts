@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../const';
+import {AuthorizationStatus} from '../../components/const';
 
 export const usePrivateRoute = (authorizationStatus: AuthorizationStatus, validStatus?: AuthorizationStatus, invalidStatus?: AuthorizationStatus) => {
   let isValid = false;

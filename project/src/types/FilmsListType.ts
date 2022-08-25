@@ -35,7 +35,10 @@ export type ActiveFilmType = {
   comments: CommentType[];
 };
 
+export type FilmStatus = 0 | 1;
+
 export type FilmId = { id: string | undefined };
+export type FilmData = { status: FilmStatus, filmId: number };
 
 export type CommentFormType = {
   rating: null | number;

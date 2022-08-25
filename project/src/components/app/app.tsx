@@ -3,9 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
 import browserHistory from '../../browser-history';
-import HistoryRouter from '../../components/history-route/history-route';
+import HistoryRouter from '../../hocs/history-route/history-route';
 
-import {FilmOverview, PrivateRoute, FilmDetails, FilmReviews} from '../../components';
+import {FilmOverview, FilmDetails, FilmReviews} from '../../components';
+import {PrivateRoute} from '../../hocs';
+
 import {
   MainPage,
   SignIn,
@@ -18,12 +20,10 @@ import {
 
 import { AuthorizationStatus } from '../const';
 
-import { InitialStateType } from '../../types/state';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function App(): JSX.Element {
-  const { authorizationStatus } = useAppSelector(
-    (state: InitialStateType) => state
-  );
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <HistoryRouter history={browserHistory}>

@@ -7,8 +7,12 @@ import { loadFilmData } from '../store/api-actions';
 
 import {calculateLeftTime} from '../services/calculateLeftTime';
 
+import {getAuthorizationStatus} from '../store/user-process/selectors';
+import {getActiveFilm} from '../store/film-process/selectors';
+
 export const useCurrentFilmHook = () => {
-  const { activeFilm, authorizationStatus } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const activeFilm = useAppSelector(getActiveFilm);
 
   const { id } = useParams();
   const dispatch = useAppDispatch();
