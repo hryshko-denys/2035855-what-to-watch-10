@@ -8,12 +8,14 @@ import { FilmsListType } from '../types/FilmsListType';
 
 import { INITIAL_GENRE } from '../store/const';
 
+import {getActiveFilmsCardsNumber, getActiveGenre} from '../store/films-process/selectors';
+
 type ActiveFilmType = number | null;
 
 export const useCurrentFilmPreview = (filmsList: FilmsListType[]) => {
-  const { activeGenre, activeFilmsCardsNumber } = useAppSelector(
-    (state) => state
-  );
+  const activeGenre = useAppSelector(getActiveGenre);
+  const activeFilmsCardsNumber = useAppSelector(getActiveFilmsCardsNumber);
+
   const [activeFilmId, setActiveFilmId] = useState<ActiveFilmType>(null);
 
   const filteredListByGenre =

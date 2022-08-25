@@ -3,9 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
 import browserHistory from '../../browser-history';
-import HistoryRouter from '../../components/history-route/history-route';
+import HistoryRouter from '../../hocs/history-route/history-route';
 
-import {FilmOverview, PrivateRoute, FilmDetails, FilmReviews} from '../../components';
+import {FilmOverview, FilmDetails, FilmReviews} from '../../components';
+import {PrivateRoute} from '../../hocs';
+
 import {
   MainPage,
   SignIn,
@@ -16,38 +18,37 @@ import {
   NotFoundPage,
 } from '../../pages';
 
-import { AuthorizationStatus } from '../const';
+import {AuthorizationStatus} from '../const';
+import {APIRoute} from '../../services/const';
 
-import { InitialStateType } from '../../types/state';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function App(): JSX.Element {
-  const { authorizationStatus } = useAppSelector(
-    (state: InitialStateType) => state
-  );
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path={APIRoute.Index} element={<MainPage />} />
         <Route
-          path="/login"
+          path={APIRoute.Login}
           element={
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               invalidStatus={AuthorizationStatus.AUTH}
-              navigatePath="/"
+              navigatePath={APIRoute.Index}
             >
               <SignIn />
             </PrivateRoute>
           }
         />
         <Route
-          path="/mylist"
+          path={APIRoute.MyList}
           element={
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               validStatus={AuthorizationStatus.AUTH}
-              navigatePath="/login"
+              navigatePath={APIRoute.Login}
             >
               <MyList />
             </PrivateRoute>
@@ -64,7 +65,7 @@ function App(): JSX.Element {
             <PrivateRoute
               authorizationStatus={authorizationStatus}
               validStatus={AuthorizationStatus.AUTH}
-              navigatePath="/login"
+              navigatePath={APIRoute.Login}
             >
               <AddReview />
             </PrivateRoute>

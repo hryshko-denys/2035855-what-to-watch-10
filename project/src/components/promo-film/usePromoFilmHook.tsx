@@ -1,14 +1,11 @@
 import { useAppSelector } from '../../hooks';
 
-export const usePromoFilmHook = () => {
-  const { authorizationStatus, favoriteList } = useAppSelector(
-    (state) => state
-  );
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
-  const userFilmsNumber = favoriteList?.length || 0;
+export const usePromoFilmHook = () => {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return {
-    userFilmsNumber,
     authorizationStatus,
   };
 };

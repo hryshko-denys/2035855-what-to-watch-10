@@ -9,16 +9,19 @@ export type State = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
-export type InitialStateType = {
-  activeGenre: string,
-  filmsList: FilmsListType[],
-  activeFilmsCardsNumber: number,
-  promoFilm: null | FilmsListType,
-  isInitialStateLoading: boolean,
+export type FilmProcess = {
   isCommentError: boolean,
   isFilmDataLoading: boolean,
   activeFilm: null | ActiveFilmType,
+}
+
+export type UserProcess = {
   authorizationStatus: AuthorizationStatus,
   userData: null | UserData,
-  favoriteList: null | FilmsListType[],
+}
+export type FilmsProcess = {
+  activeGenre: string,
+  activeFilmsCardsNumber: number,
+  filmsList: FilmsListType[],
+  promoFilm: null | FilmsListType,
 }

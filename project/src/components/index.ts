@@ -1,8 +1,7 @@
 import FilmCard from './film-card';
-import PrivateRoute from './private-route';
 import FilmList from './film-list';
 import MainLogo from './main-logo';
-import FormAddReview from './add-review-form';
+import AddReviewForm from './add-review-form';
 import GenreList from './genre-list';
 import AddReviewStar from './add-review-star';
 import MovieDetailsTop from './movie-details-top';
@@ -19,13 +18,13 @@ import FilmDetails from './film-details';
 import FilmReviews from './film-reviews';
 import DetailsBlock from './details-block';
 import Footer from './footer';
+import MyListBtn from './my-list-btn';
 
 export {
   FilmCard,
-  PrivateRoute,
   FilmList,
   MainLogo,
-  FormAddReview,
+  AddReviewForm,
   GenreList,
   AddReviewStar,
   MovieDetailsTop,
@@ -41,5 +40,6 @@ export {
   FilmDetails,
   FilmReviews,
   DetailsBlock,
-  Footer
+  Footer,
+  MyListBtn
 };
