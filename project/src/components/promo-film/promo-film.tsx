@@ -1,4 +1,4 @@
-import React from 'react';
+import {memo} from 'react';
 import { Link } from 'react-router-dom';
 
 import {MainLogo, MyListBtn, SignIn, SignOut} from '../../components';
@@ -70,4 +70,4 @@ function PromoFilm({ promoFilm }: PromoFilmComponentProps): JSX.Element {
   );
 }
 
-export default React.memo(PromoFilm);
+export default memo(PromoFilm);

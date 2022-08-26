@@ -14,7 +14,7 @@ export const useMyListBtn = (filmId: number) => {
     if (favoriteList) {
       return favoriteList.some(({id}) => id === filmId);
     }
-  }, [favoriteList]);
+  }, [favoriteList, filmId]);
 
   const toggleMyList = () => {
     const status = isFavorite ? 0 : 1;

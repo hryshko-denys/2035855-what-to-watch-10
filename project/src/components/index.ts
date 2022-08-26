@@ -19,6 +19,7 @@ import FilmReviews from './film-reviews';
 import DetailsBlock from './details-block';
 import Footer from './footer';
 import MyListBtn from './my-list-btn';
+import FormRating from './form-rating';
 
 export {
   FilmCard,
@@ -41,5 +42,6 @@ export {
   FilmReviews,
   DetailsBlock,
   Footer,
-  MyListBtn
+  MyListBtn,
+  FormRating,
 };

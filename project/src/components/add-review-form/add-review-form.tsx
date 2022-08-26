@@ -1,8 +1,6 @@
-import { AddReviewStar } from '../index';
+import {FormRating} from '../index';
 
 import { useFormAddReviewHook } from './hooks';
-
-import { RATING_ARRAY } from './utils';
 
 type AddReviewFormType = {
   id: number;
@@ -21,19 +19,7 @@ function AddReviewForm({ id }: AddReviewFormType): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit} className="add-review__form">
-      <div className="rating">
-        <div className="rating__stars">
-          {RATING_ARRAY.map((star) => (
-            <AddReviewStar
-              key={star}
-              id={star.toString()}
-              isChecked={star === formData.rating}
-              isDisabled={isCommentSending}
-              handleRatingChange={handleRatingChange}
-            />
-          ))}
-        </div>
-      </div>
+      <FormRating handleRatingChange={handleRatingChange} rating={formData.rating} isCommentSending={isCommentSending} />
 
       <div className="add-review__text">
         <textarea
