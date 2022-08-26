@@ -1,6 +1,6 @@
 import {FilmsListType} from '../../types/FilmsListType';
 
-import {AWESOME_RATING, BAD_RATING, FilmRating, GOOD_RATING, NORMAL_RATING} from '../add-review-form/utils';
+import {FilmRatingNumber, FilmRating} from '../add-review-form/utils';
 
 export const useMovieDetails = (movieInfo: FilmsListType) => {
   const score = movieInfo.rating;
@@ -8,19 +8,19 @@ export const useMovieDetails = (movieInfo: FilmsListType) => {
   let ratingLevel: string;
 
   switch (true) {
-    case score < BAD_RATING:
+    case score < FilmRatingNumber.BadRating:
       ratingLevel = FilmRating.Bad;
       break;
-    case score >= BAD_RATING && score < NORMAL_RATING:
+    case score >= FilmRatingNumber.BadRating && score < FilmRatingNumber.NormalRating:
       ratingLevel = FilmRating.Normal;
       break;
-    case score >= NORMAL_RATING && score < GOOD_RATING:
+    case score >= FilmRatingNumber.NormalRating && score < FilmRatingNumber.GoodRating:
       ratingLevel = FilmRating.Good;
       break;
-    case score >= GOOD_RATING && score < AWESOME_RATING:
+    case score >= FilmRatingNumber.GoodRating && score < FilmRatingNumber.AwesomeRating:
       ratingLevel = FilmRating.VeryGood;
       break;
-    case score === AWESOME_RATING:
+    case score === FilmRatingNumber.AwesomeRating:
       ratingLevel = FilmRating.Awesome;
       break;
     default:

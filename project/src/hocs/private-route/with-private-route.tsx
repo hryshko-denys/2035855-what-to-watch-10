@@ -12,7 +12,7 @@ type PrivateRoutesProps = {
   children: JSX.Element;
 };
 
-const withPrivateRoute = function PrivateRoute({
+const withPrivateRoute = () => function PrivateRoute({
   authorizationStatus,
   navigatePath,
   validStatus,
