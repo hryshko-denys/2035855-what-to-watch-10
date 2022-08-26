@@ -1,1 +1,1 @@
-export { default } from './private-route';
+export { default } from './with-private-route';

@@ -1,1 +1,1 @@
-export { default } from './history-route';
+export { default } from './with-history-route';

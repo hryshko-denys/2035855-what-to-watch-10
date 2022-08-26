@@ -1,4 +1,4 @@
-import {useFilmComment} from './useFilmComment';
+import {useFilmComment} from './hooks';
 
 import {CommentType} from '../../types/FilmsListType';
 

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-import { usePrivateRoute } from './usePrivateRoute';
+import { usePrivateRoute } from './hooks';
 
 import {AuthorizationStatus} from '../../components/const';
 
@@ -12,7 +12,7 @@ type PrivateRoutesProps = {
   children: JSX.Element;
 };
 
-function PrivateRoute({
+const withPrivateRoute = function PrivateRoute({
   authorizationStatus,
   navigatePath,
   validStatus,
@@ -25,6 +25,6 @@ function PrivateRoute({
     invalidStatus
   );
   return isValid ? children : <Navigate to={navigatePath} />;
-}
+};
 
-export default PrivateRoute;
+export default withPrivateRoute;

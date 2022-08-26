@@ -3,7 +3,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { store } from '../../store';
 import { loginAction } from '../../store/api-actions';
 
-import { EMAIL_REGEX, PASSWORD_REGEX } from './utils';
+import {EMAIL_REGEX, ErrorType, PASSWORD_REGEX} from './utils';
 
 export const useSignInHook = () => {
   const INITIAL_STATE = {
@@ -36,12 +36,12 @@ export const useSignInHook = () => {
     event.preventDefault();
 
     if (!EMAIL_REGEX.test(loginData.email)) {
-      setError('email');
+      setError(ErrorType.Email);
       return;
     }
 
     if (!PASSWORD_REGEX.test(loginData.password)) {
-      setError('password');
+      setError(ErrorType.Password);
       return;
     }
 
@@ -52,13 +52,13 @@ export const useSignInHook = () => {
 
   const getErrorText = () => {
     switch (error) {
-      case 'email':
+      case ErrorType.Email:
         return 'Please enter a valid email address';
 
-      case 'password':
+      case ErrorType.Password:
         return 'Please enter a valid password';
 
-      case 'invalid-data':
+      case ErrorType.InvalidData:
         return 'We can’t recognize this email and password combination. Please try again.';
 
       default:
