@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
 import browserHistory from '../../browser-history';
-import HistoryRouter from '../../hocs/history-route/with-history-route';
+import HistoryRouter from '../history-route/history-route';
 
-import {FilmOverview, FilmDetails, FilmReviews} from '../../components';
-import {PrivateRoute} from '../../hocs';
+import {FilmOverview, FilmDetails, FilmReviews, PrivateRoute} from '../../components';
 
 import {
   MainPage,
