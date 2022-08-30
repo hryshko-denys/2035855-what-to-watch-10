@@ -1,6 +1,6 @@
 import {Footer, MainLogo} from '../../components';
 
-import { useSignInHook } from './useSignInHook';
+import { useSignInHook } from './hooks';
 
 function SignIn(): JSX.Element {
   const {

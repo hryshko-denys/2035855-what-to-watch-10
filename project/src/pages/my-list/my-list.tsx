@@ -2,7 +2,7 @@ import {FilmCard, Footer, MainLogo, SignOut} from '../../components';
 
 import { useCurrentFilmPreview } from '../../hooks/useCurrentFilmPreview';
 
-import { useUsersList } from './useUsersList';
+import { useUsersList } from './hooks';
 
 function MyList(): JSX.Element {
   const { userFilms } = useUsersList();

@@ -20,6 +20,8 @@ import DetailsBlock from './details-block';
 import Footer from './footer';
 import MyListBtn from './my-list-btn';
 import FormRating from './form-rating';
+import HistoryRoute from './history-route';
+import PrivateRoute from './private-route';
 
 export {
   FilmCard,
@@ -44,4 +46,6 @@ export {
   Footer,
   MyListBtn,
   FormRating,
+  HistoryRoute,
+  PrivateRoute
 };

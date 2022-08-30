@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
 import browserHistory from '../../browser-history';
-import HistoryRouter from '../../hocs/history-route/history-route';
+import HistoryRouter from '../history-route/history-route';
 
-import {FilmOverview, FilmDetails, FilmReviews} from '../../components';
-import {PrivateRoute} from '../../hocs';
+import {FilmOverview, FilmDetails, FilmReviews, PrivateRoute} from '../../components';
 
 import {
   MainPage,
@@ -54,13 +53,13 @@ function App(): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path="/films/:id" element={<MoviePage />}>
+        <Route path={APIRoute.Film} element={<MoviePage />}>
           <Route index element={<FilmOverview />} />
-          <Route path="details" element={<FilmDetails />} />
-          <Route path="reviews" element={<FilmReviews />} />
+          <Route path={APIRoute.Details} element={<FilmDetails />} />
+          <Route path={APIRoute.Reviews} element={<FilmReviews />} />
         </Route>
         <Route
-          path="/films/:id/review"
+          path={APIRoute.FullReviews}
           element={
             <PrivateRoute
               authorizationStatus={authorizationStatus}
@@ -71,8 +70,8 @@ function App(): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path="/player/:id" element={<Player />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={APIRoute.Player} element={<Player />} />
+        <Route path={APIRoute.NotFoundPage} element={<NotFoundPage />} />
       </Routes>
     </HistoryRouter>
   );

@@ -6,7 +6,7 @@ import {
   Footer,
 } from '../../components';
 
-import { useMainPage } from './useMainPage';
+import { useMainPage } from './hooks';
 
 function MainPage(): JSX.Element {
   const { isAllDataDownloaded, filmsList, promoFilm } = useMainPage();

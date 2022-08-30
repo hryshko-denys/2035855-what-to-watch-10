@@ -1,6 +1,6 @@
 import {useOutletContext} from 'react-router-dom';
 
-import {useMovieDetails} from './useMovieDetails';
+import {useMovieDetails} from './hooks';
 
 import { ActiveFilmType} from '../../types/FilmsListType';
 

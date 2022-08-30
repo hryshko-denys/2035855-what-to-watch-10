@@ -10,6 +10,8 @@ import {calculateLeftTime} from '../services/calculateLeftTime';
 import {getAuthorizationStatus} from '../store/user-process/selectors';
 import {getActiveFilm} from '../store/film-process/selectors';
 
+import {INTERVAL_TIME, LOADED_STATUS_NUMBER, PERCENTAGE_NUMBER} from './const';
+
 export const useCurrentFilmHook = () => {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const activeFilm = useAppSelector(getActiveFilm);
@@ -42,12 +44,12 @@ export const useCurrentFilmHook = () => {
           return;
         }
 
-        setCurrentProgress((currentTime / duration) * 100);
+        setCurrentProgress((currentTime / duration) * PERCENTAGE_NUMBER);
 
         const timeToShow = calculateLeftTime(duration, currentTime);
         setTimeToEnd(timeToShow);
       }
-    }, 100);
+    }, INTERVAL_TIME);
 
     return () => clearInterval(updateVideoProgress);
   }, []);
@@ -74,7 +76,7 @@ export const useCurrentFilmHook = () => {
 
   const checkLoading = () => {
     if (videoRef.current) {
-      setIsVideoReadyToPlay(videoRef.current.readyState === 4);
+      setIsVideoReadyToPlay(videoRef.current.readyState === LOADED_STATUS_NUMBER);
     }
   };
 

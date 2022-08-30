@@ -1,6 +1,6 @@
 import {useOutletContext} from 'react-router-dom';
 
-import {useFilmReviews} from './useFilmReviews';
+import {useFilmReviews} from './hooks';
 
 import FilmComment from '../film-comment';
 
