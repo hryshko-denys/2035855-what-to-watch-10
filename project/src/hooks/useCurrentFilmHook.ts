@@ -54,7 +54,7 @@ export const useCurrentFilmHook = () => {
     return () => clearInterval(updateVideoProgress);
   }, []);
 
-  const togglePlayVideo = async () => {
+  const handlePlayVideo = async () => {
     if (!videoRef.current) {
       return;
     }
@@ -74,15 +74,15 @@ export const useCurrentFilmHook = () => {
     }
   };
 
-  const checkLoading = () => {
+  const handleLoading = () => {
     if (videoRef.current) {
       setIsVideoReadyToPlay(videoRef.current.readyState === LOADED_STATUS_NUMBER);
     }
   };
 
-  const goBack = () => {
+  const handleGoBack = () => {
     navigate(-1);
   };
 
-  return { activeFilm, isFilmLoading, authorizationStatus, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, isVideoReadyToPlay, timeToEnd, isVideoPlaying, checkLoading, goBack };
+  return { activeFilm, isFilmLoading, authorizationStatus, handlePlayVideo, videoRef, toggleFullScreen, currentProgress, isVideoReadyToPlay, timeToEnd, isVideoPlaying, handleLoading, handleGoBack };
 };

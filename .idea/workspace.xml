@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="874b3550-0be0-4a5d-b2fb-e56ab7b6c378" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/project/src/components/film-card/film-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/film-card/film-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/film-comment/film-component.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/film-comment/film-comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/film-comment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/film-comment/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/film-list/film-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/film-list/film-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/movie-details-top/movie-details-top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/movie-details-top/movie-details-top.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/my-list-btn/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/my-list-btn/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/my-list-btn/my-list-btn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/my-list-btn/my-list-btn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/sign-out/sign-out.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/sign-out/sign-out.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/sign-out/useSignOut.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/sign-out/useSignOut.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/hooks/useCurrentFilmHook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/hooks/useCurrentFilmHook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/hooks/useCurrentFilmPreview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/hooks/useCurrentFilmPreview.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/pages/my-list/my-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/pages/my-list/my-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/pages/player/player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/pages/player/player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/services/calculateLeftTime.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/services/calculateLeftTime.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/store/api-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/store/api-actions.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/project/src/components/app/app.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/src/pages/main-page/index.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/src/pages/main-page/main-page.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/src/pages/movie-page/hooks.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/src/pages/movie-page/movie-page.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/src/pages/sign-in/sign-in.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Dn5u7cvnNQkIx8YDUwgJfU0MCk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/hryshkodenys/Downloads/projects/3/2035855-what-to-watch-10/project/src/hocs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/Users/hryshkodenys/.nvm/versions/node/v16.12.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/hryshkodenys/Downloads/projects/3/2035855-what-to-watch-10/project/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project/src/hocs" />
+      <recent name="$PROJECT_DIR$/project/src/components" />
+      <recent name="$PROJECT_DIR$/project/src/store" />
+      <recent name="$PROJECT_DIR$/project/src/store/films-process" />
+      <recent name="$PROJECT_DIR$/project/src/services/user-process" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project/src/components" />
+      <recent name="$PROJECT_DIR$/project/src/components/form-rating" />
+      <recent name="$PROJECT_DIR$/project/src/hocs" />
+      <recent name="$PROJECT_DIR$/project/src/store" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="874b3550-0be0-4a5d-b2fb-e56ab7b6c378" name="Changes" comment="" />
+      <created>1661322229240</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661322229240</updated>
+      <workItem from="1661322231719" duration="18320000" />
+      <workItem from="1661417965293" duration="20268000" />
+      <workItem from="1661517368724" duration="4498000" />
+      <workItem from="1661842766327" duration="19000" />
+      <workItem from="1661844209821" duration="3822000" />
+      <workItem from="1661848045017" duration="1173000" />
+      <workItem from="1661849682300" duration="70000" />
+      <workItem from="1661850046407" duration="74000" />
+      <workItem from="1661868432725" duration="1223000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

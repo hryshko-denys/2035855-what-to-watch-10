@@ -23,10 +23,11 @@ import { AppDispatch, State } from '../types/state';
 import { saveToken } from '../services/token';
 
 import { FilmsListType, FilmId, CommentFormRequest, FilmData } from '../types/FilmsListType';
+
 import { AuthorizationStatus } from '../components/const';
+
 import { UserData, AuthData } from '../types/auth-data';
 
-import { AppRoute } from '../types/routePath';
 
 export const fetchFilmsListAction = createAsyncThunk<
   void,
@@ -92,7 +93,7 @@ export const loginAction = createAsyncThunk<
 
   dispatch(setUserData(userData));
   dispatch(requireAuthorization(AuthorizationStatus.AUTH));
-  dispatch(redirectToRoute(AppRoute.Root));
+  dispatch(redirectToRoute(APIRoute.Index));
 
   const { data } = await api.get<FilmsListType[]>(APIRoute.Favorite);
   dispatch(setFavoriteList(data));
@@ -110,7 +111,7 @@ export const logoutAction = createAsyncThunk<
   await api.delete(APIRoute.Logout);
 
   dispatch(resetLogout());
-  dispatch(redirectToRoute(AppRoute.Login));
+  dispatch(redirectToRoute(APIRoute.Login));
 });
 
 export const sendComment = createAsyncThunk<
@@ -151,7 +152,7 @@ export const loadFilmData = createAsyncThunk<
     );
     dispatch(setFilmDataLoading(false));
   } catch {
-    dispatch(redirectToRoute(AppRoute.NotFoundPage));
+    dispatch(redirectToRoute(APIRoute.NotFoundPage));
   }
 });
 

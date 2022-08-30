@@ -13,8 +13,8 @@ type FilmsListComponentProps = {
 
 function FilmList({ filmsList }: FilmsListComponentProps): JSX.Element {
   const {
-    setFilmId,
-    resetFilmId,
+    handleSetFilmId,
+    handleResetFilmId,
     activeFilmId,
     isShowMoreBtnShown,
     resetFilmsList,
@@ -39,8 +39,8 @@ function FilmList({ filmsList }: FilmsListComponentProps): JSX.Element {
             key={film.id}
             film={film}
             isActive={activeFilmId === film.id}
-            setFilmId={setFilmId}
-            resetFilmId={resetFilmId}
+            handleSetFilmId={handleSetFilmId}
+            handleResetFilmId={handleResetFilmId}
           />
         ))}
       </div>

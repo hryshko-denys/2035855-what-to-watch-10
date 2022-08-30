@@ -9,7 +9,7 @@ import {getUserData} from '../../store/user-process/selectors';
 export const useSignOut = () => {
   const userData = useAppSelector(getUserData);
 
-  const logout = () => {
+  const handleLogout = () => {
     store.dispatch(logoutAction());
   };
 
@@ -17,6 +17,6 @@ export const useSignOut = () => {
 
   return {
     avatar,
-    logout,
+    handleLogout,
   };
 };

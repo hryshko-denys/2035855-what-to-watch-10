@@ -16,7 +16,7 @@ export const useMyListBtn = (filmId: number) => {
     }
   }, [favoriteList, filmId]);
 
-  const toggleMyList = () => {
+  const handleToggleMyList = () => {
     const status = isFavorite ? 0 : 1;
 
     dispatch(changeFilmInUserList({filmId, status}));
@@ -25,6 +25,6 @@ export const useMyListBtn = (filmId: number) => {
   return {
     favoriteList,
     isFavorite,
-    toggleMyList,
+    handleToggleMyList,
   };
 };

@@ -7,22 +7,22 @@ import { VideoPlayer } from '../index';
 type FilmCardComponentProps = {
   film: FilmsListType;
   isActive: boolean;
-  setFilmId: (filmId: number) => void;
-  resetFilmId: () => void;
+  handleSetFilmId: (filmId: number) => void;
+  handleResetFilmId: () => void;
 };
 
 function FilmCard({
   film,
   isActive,
-  setFilmId,
-  resetFilmId,
+  handleSetFilmId,
+  handleResetFilmId,
 }: FilmCardComponentProps): JSX.Element {
   const { id, previewImage, name, previewVideoLink, posterImage } = film;
 
   return (
     <article
-      onMouseEnter={() => setFilmId(id)}
-      onMouseLeave={() => resetFilmId()}
+      onMouseEnter={() => handleSetFilmId(id)}
+      onMouseLeave={handleResetFilmId}
       className="small-film-card catalog__films-card"
     >
       {isActive ? (

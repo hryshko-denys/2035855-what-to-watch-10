@@ -1,1 +1,1 @@
-export { default } from './film-component';
+export { default } from './film-comment';

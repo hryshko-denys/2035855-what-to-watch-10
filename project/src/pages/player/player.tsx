@@ -3,7 +3,7 @@ import { Loader } from '../../components';
 import { useCurrentFilmHook } from '../../hooks/useCurrentFilmHook';
 
 function Player(): JSX.Element {
-  const { activeFilm, isFilmLoading, togglePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying, checkLoading, isVideoReadyToPlay, goBack } = useCurrentFilmHook();
+  const { activeFilm, isFilmLoading, handlePlayVideo, videoRef, toggleFullScreen, currentProgress, timeToEnd, isVideoPlaying, handleLoading, isVideoReadyToPlay, handleGoBack } = useCurrentFilmHook();
 
   const video = activeFilm ? activeFilm.filmInfo.videoLink : null;
   const image = activeFilm ? activeFilm.filmInfo.backgroundImage : null;
@@ -15,8 +15,8 @@ function Player(): JSX.Element {
       {isFilmLoaded ? (
         <video
           ref={videoRef}
-          onClick={togglePlayVideo}
-          onLoadedData={checkLoading}
+          onClick={handlePlayVideo}
+          onLoadedData={handleLoading}
           src={video}
           className="player__video"
           poster={image}
@@ -24,7 +24,7 @@ function Player(): JSX.Element {
         />
       ) : <Loader />}
 
-      <button onClick={goBack} type="button" className="player__exit">
+      <button onClick={handleGoBack} type="button" className="player__exit">
         Exit
       </button>
 
@@ -40,7 +40,7 @@ function Player(): JSX.Element {
         </div>
 
         <div className="player__controls-row">
-          <button onClick={togglePlayVideo} type="button" className="player__play">
+          <button onClick={handlePlayVideo} type="button" className="player__play">
             <svg viewBox="0 0 19 19" width="19" height="19">
               <use xlinkHref={isVideoPlaying ? '#pause' : '#play-s'}></use>
             </svg>

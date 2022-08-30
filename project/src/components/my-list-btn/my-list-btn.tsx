@@ -5,11 +5,11 @@ type MyListBtnProps = {
 }
 
 function MyListBtn({ id }: MyListBtnProps): JSX.Element {
-  const { favoriteList, toggleMyList, isFavorite } = useMyListBtn(id);
+  const { favoriteList, handleToggleMyList, isFavorite } = useMyListBtn(id);
 
   return (
     <button
-      onClick={toggleMyList}
+      onClick={handleToggleMyList}
       className="btn btn--list film-card__button"
       type="button"
     >

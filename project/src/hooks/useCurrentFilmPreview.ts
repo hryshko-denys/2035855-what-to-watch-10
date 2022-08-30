@@ -29,18 +29,18 @@ export const useCurrentFilmPreview = (filmsList: FilmsListType[]) => {
 
   let timeoutId: ReturnType<typeof setTimeout>;
 
-  const setFilmId = (id: number) => {
+  const handleSetFilmId = (id: number) => {
     timeoutId = setTimeout(() => setActiveFilmId(id), 2000);
   };
 
-  const resetFilmId = () => {
+  const handleResetFilmId = () => {
     clearTimeout(timeoutId);
     setActiveFilmId(null);
   };
 
   return {
-    setFilmId,
-    resetFilmId,
+    handleSetFilmId,
+    handleResetFilmId,
     activeFilmId,
     isShowMoreBtnShown,
     resetFilmsList,

@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import {MyListBtn} from '../index';
 
-import { FilmsListType } from '../../types/FilmsListType';
+import {FilmsListType} from '../../types/FilmsListType';
 
-import { useAppSelector } from '../../hooks';
+import {useAppSelector} from '../../hooks';
 
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
+
+import {AuthorizationStatus} from '../const';
 
 type MovieDetailsTopComponentProps = {
   currentFilm: FilmsListType;
@@ -41,7 +43,7 @@ function MovieDetailsTop({
             </svg>
             <span>Play</span>
           </Link>
-          {authorizationStatus === 'AUTH' && (
+          {authorizationStatus === AuthorizationStatus.AUTH && (
             <>
               <MyListBtn id={id} />
               <Link

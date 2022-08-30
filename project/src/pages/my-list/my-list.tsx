@@ -6,7 +6,7 @@ import { useUsersList } from './hooks';
 
 function MyList(): JSX.Element {
   const { userFilms } = useUsersList();
-  const { setFilmId, resetFilmId, activeFilmId } = useCurrentFilmPreview(userFilms);
+  const { handleSetFilmId, handleResetFilmId, activeFilmId } = useCurrentFilmPreview(userFilms);
 
   return (
     <div className="user-page">
@@ -28,8 +28,8 @@ function MyList(): JSX.Element {
               key={film.id}
               film={film}
               isActive={activeFilmId === film.id}
-              setFilmId={setFilmId}
-              resetFilmId={resetFilmId}
+              handleSetFilmId={handleSetFilmId}
+              handleResetFilmId={handleResetFilmId}
             />
           ))}
         </div>

@@ -11,11 +11,9 @@ export const calculateLeftTime = (duration: number, currentTime: number) => {
   }
 
   const minutesToEnd = Math.trunc(adaptedTime / 60);
-  if (minutesToEnd > 0) {
-    const adaptedMinutes = minutesToEnd < 10 ? `0${minutesToEnd}` : minutesToEnd;
-    timeToShow += `${adaptedMinutes}:`;
-    adaptedTime -= minutesToEnd * 60;
-  }
+  const adaptedMinutes = minutesToEnd < 10 ? `0${minutesToEnd}` : minutesToEnd;
+  timeToShow += `${adaptedMinutes}:`;
+  adaptedTime -= minutesToEnd * 60;
 
   const adaptedSeconds = adaptedTime < 10 ? `0${adaptedTime}` : adaptedTime;
   timeToShow += `${adaptedSeconds}`;

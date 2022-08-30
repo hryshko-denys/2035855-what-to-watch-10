@@ -5,7 +5,7 @@ import { useSignOut } from './useSignOut';
 import {APIRoute} from '../../services/const';
 
 function SignOut(): JSX.Element {
-  const { logout, avatar } = useSignOut();
+  const { handleLogout, avatar } = useSignOut();
 
   return (
     <ul className="user-block">
@@ -17,7 +17,7 @@ function SignOut(): JSX.Element {
         </Link>
       </li>
       <li className="user-block__item">
-        <button onClick={logout} className="btn user-block__link" type='button'>
+        <button onClick={handleLogout} className="btn user-block__link" type='button'>
           Sign out
         </button>
       </li>
